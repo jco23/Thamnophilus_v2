@@ -4,7 +4,13 @@
  */
 package com.thp.control;
 
+import com.thp.boundary.PaymentForm;
+import com.thp.object.AccountDB;
 import com.thp.object.Payment;
+import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,15 +18,19 @@ import com.thp.object.Payment;
  */
 public class PaymentControl {
     public static String enterPayment(Payment pment){
-        boolean success = true; 
-        String status;
-        if(success == true) {
-            status = "Successful";
-        }     
-        else {
-            status = "Fail!";
+        try{
+            Statement stmt = AccountDB.conn.createStatement();
+            String sql = "INSERT INTO APP.PAYMENTS(paymentID, invoiceID, amountPaid, paymentDate) VALUES(" +
+                    pment.getPaymentId() + ", " +
+                    pment.getInvoiceId() + ", " +
+                    pment.getAmountPaid() + ", " +
+                    pment.getPaymentDate() +")";
+            stmt.executeUpdate(sql);
+            return "Payment successfully entered";
+        }catch (SQLException ex) {
+            Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+            return "Error. Entering payment failed.";
         }
-        return status;
     } 
    
 }
