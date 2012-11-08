@@ -1,6 +1,8 @@
 package com.thp.boundary;
 
 
+import com.thp.control.WidgetControl;
+import com.thp.object.Widget;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -47,6 +49,11 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         jMatchOk = new javax.swing.JButton();
         jMatchDescription = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jMatchId = new javax.swing.JTextField();
+        jSaveEdit = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jMatchStatus = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -72,16 +79,12 @@ public class SearchWidgetForm extends javax.swing.JFrame {
 
         jLabel7.setText("Quantity");
 
-        jMatchName.setEditable(false);
         jMatchName.setText("jTextField2");
 
-        jMatchCost.setEditable(false);
         jMatchCost.setText("jTextField3");
 
-        jMatchPrice.setEditable(false);
         jMatchPrice.setText("jTextField4");
 
-        jMatchQuantity.setEditable(false);
         jMatchQuantity.setText("jTextField5");
 
         jMatchOk.setText("OK");
@@ -91,10 +94,33 @@ public class SearchWidgetForm extends javax.swing.JFrame {
             }
         });
 
-        jMatchDescription.setEditable(false);
         jMatchDescription.setText("jTextField6");
+        jMatchDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMatchDescriptionActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Description");
+
+        jLabel9.setText("ID#:");
+
+        jMatchId.setEditable(false);
+        jMatchId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jMatchId.setText("jTextField1");
+
+        jSaveEdit.setText("Save");
+        jSaveEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSaveEditActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Status:");
+
+        jMatchStatus.setEditable(false);
+        jMatchStatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jMatchStatus.setText("jTextField1");
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -110,31 +136,41 @@ public class SearchWidgetForm extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addComponent(jLabel7)
                 .addGap(53, 53, 53))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jMatchName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jMatchCost, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jMatchOk, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSaveEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jMatchName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jMatchCost, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jMatchQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
-            .addGroup(jFrame1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(jLabel3))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jMatchOk, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel8)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jMatchId, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(jMatchStatus))
+                .addGap(33, 33, 33))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +189,20 @@ public class SearchWidgetForm extends javax.swing.JFrame {
                     .addComponent(jMatchCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMatchQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jMatchId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jMatchStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addComponent(jMatchOk)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jMatchOk)
+                    .addComponent(jSaveEdit))
                 .addGap(19, 19, 19))
         );
 
@@ -272,46 +316,20 @@ public class SearchWidgetForm extends javax.swing.JFrame {
 
     private void jSearchButtonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchButtonMouseReleased
         // TODO add your handling code here:
-        String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-        String dbName = "//localhost:1527/ardatabase;";
-        String connectionURL = "jdbc:derby:" + dbName;
-        Connection conn = null;
-        boolean found = false;
-        
-        try
-        {
-            Class.forName(driver);
-        }catch(ClassNotFoundException e){System.out.println(e);}
-        
-        try
-        {
-            conn = DriverManager.getConnection(connectionURL);
-            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            
-            ResultSet rs = stmt.executeQuery("Select * From APP.WIDGETS");
-            
-            while(rs.next())
-            {
-                if(jDesiredWidget.getText().equalsIgnoreCase(rs.getString("WIDGETNAME")))
-                {
-                    jMatchName.setText(rs.getString(2));
-                    jMatchCost.setText(rs.getString(4));
-                    jMatchPrice.setText(rs.getString(5));
-                    jMatchQuantity.setText(rs.getString(6));
-                    jMatchDescription.setText(rs.getString(3));
-                    jFrame1.setVisible(true);
-                    found = true;
-                }
-            }
-            if(found == false)
-            {
-                    jDesiredWidget.setText("NO MATCH FOUND!");
-            }
-            stmt.close();
-            rs.close();
-            
-
-        }catch(SQLException e){System.err.print(e);}
+        String name = this.jDesiredWidget.getText().toUpperCase();
+        Widget widget = new Widget();
+        widget.setName(name);
+        widget = WidgetControl.searchWidget(widget);
+        this.jMatchId.setText(Long.toString(widget.getWidgetId()));
+        this.jMatchName.setText(widget.getName());
+        this.jMatchDescription.setText(widget.getDescription());
+        this.jMatchCost.setText(Double.toString(widget.getUnitCostPrice()));
+        this.jMatchPrice.setText(Double.toString(widget.getUnitSellPrice()));
+        this.jMatchQuantity.setText(Integer.toString(widget.getQuantity()));
+        if(widget.getDescription()=="")
+            this.jDesiredWidget.setText("No Match!");
+        else
+            this.jFrame1.setVisible(true);
     }//GEN-LAST:event_jSearchButtonMouseReleased
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -323,6 +341,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jFrame1.setSize(445,270);
         jFrame1.setLocation(80,200);
+        jMatchStatus.setText("");
     }//GEN-LAST:event_jFrame1WindowOpened
 
     private void jCancelSearchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCancelSearchMouseReleased
@@ -334,6 +353,23 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jFrame1.dispose();
     }//GEN-LAST:event_jMatchOkMouseReleased
+
+    private void jMatchDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatchDescriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMatchDescriptionActionPerformed
+
+    private void jSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveEditActionPerformed
+        // TODO add your handling code here:
+        Widget search = new Widget();
+        search.setWidgetId(Long.parseLong(this.jMatchId.getText()));
+        search.setName(this.jMatchName.getText().toUpperCase());
+        search.setDescription(this.jMatchDescription.getText());
+        search.setUnitCostPrice(Double.parseDouble(this.jMatchCost.getText()));
+        search.setUnitSellPrice(Double.parseDouble(this.jMatchPrice.getText()));
+        search.setQuantity(Integer.parseInt(this.jMatchQuantity.getText()));
+        String message = WidgetControl.editWidget(search);
+        this.jMatchStatus.setText(message);
+    }//GEN-LAST:event_jSaveEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +410,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
     private javax.swing.JTextField jDesiredWidget;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -381,14 +418,18 @@ public class SearchWidgetForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jMatchCost;
     private javax.swing.JTextField jMatchDescription;
+    private javax.swing.JTextField jMatchId;
     private javax.swing.JTextField jMatchName;
     private javax.swing.JButton jMatchOk;
     private javax.swing.JTextField jMatchPrice;
     private javax.swing.JTextField jMatchQuantity;
+    private javax.swing.JTextField jMatchStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jSaveEdit;
     private javax.swing.JButton jSearchButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,10 +1,7 @@
 package com.thp.boundary;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.thp.control.WidgetControl;
+import com.thp.object.Widget;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -32,8 +29,6 @@ public class CreateWidgetForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,30 +43,8 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jCreateQuant = new javax.swing.JTextField();
         jCreate = new javax.swing.JButton();
         jCancel = new javax.swing.JButton();
-
-        jDialog1.addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                jDialog1WindowOpened(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel7.setText("Success!");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel7)
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7)
-        );
+        jLabel8 = new javax.swing.JLabel();
+        jStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -147,6 +120,11 @@ public class CreateWidgetForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("Status:");
+
+        jStatus.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -168,9 +146,14 @@ public class CreateWidgetForm extends javax.swing.JFrame {
                     .addComponent(jCreatePrice)
                     .addComponent(jCreateQuant))
                 .addGap(108, 108, 108)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,14 +174,21 @@ public class CreateWidgetForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCreateCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCreatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCreateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCreatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCreateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
 
@@ -235,43 +225,24 @@ public class CreateWidgetForm extends javax.swing.JFrame {
 
     private void jCreateMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateMouseReleased
         // TODO add your handling code here:
-        String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-        String dbName = "//localhost:1527/ardatabase;";
-        String connectionURL = "jdbc:derby:" + dbName;
-        Connection conn = null;
-        try
+        if(this.jCreateName.getText().isEmpty() || this.jCreateName.getText().length() > 30 ||
+                this.jCreateDesc.getText().isEmpty() || this.jCreateDesc.getText(). length() > 30 ||
+                this.jCreateCost.getText().isEmpty() || this.jCreateCost.getText().length() > 6 ||
+                this.jCreatePrice.getText().isEmpty() || this.jCreatePrice.getText().length() > 7 ||
+                this.jCreateQuant.getText().isEmpty() || this.jCreateQuant.getText().length() > 10000)
         {
-            Integer.parseInt(jCreateQuant.getText());
-            Double.parseDouble(jCreateCost.getText());
-            Double.parseDouble(jCreatePrice.getText());
-        }catch(NumberFormatException e){System.out.println(e);}
-        
-        try
+            this.jCreateName.requestFocus();
+            this.jStatus.setText("ERROR");
+        }
+        else
         {
-            Class.forName(driver);
-        }catch(ClassNotFoundException e){System.out.println(e);}
-        
-        try
-        {
-            conn = DriverManager.getConnection(connectionURL);
-            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            
-            ResultSet rs = stmt.executeQuery("Select * From APP.WIDGETS");
-            
-            rs.moveToInsertRow();
-            rs.updateString("WIDGETNAME", jCreateName.getText());
-            rs.updateString("DESCRIPTION", jCreateDesc.getText());
-            rs.updateString("CUNITPRICE", jCreateCost.getText());
-            rs.updateString("SUNITPRICE",jCreatePrice.getText());
-            rs.updateString("QTY", jCreateQuant.getText());
-            rs.insertRow();
-            stmt.close();
-            rs.close();
-            
-            jDialog1.setVisible(true);
-            
-            
-        }catch(SQLException e){System.err.print(e);}
+            Widget w = new Widget(this.jCreateName.getText().toUpperCase(), this.jCreateDesc.getText(),
+                    Double.parseDouble(this.jCreateCost.getText()), Double.parseDouble(this.jCreatePrice.getText()), 
+                    Integer.parseInt(this.jCreateQuant.getText()));
+            String message = WidgetControl.createWidget(w);
+
+            this.jStatus.setText(message);
+        }
     }//GEN-LAST:event_jCreateMouseReleased
 
     private void jCreateDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreateDescActionPerformed
@@ -306,13 +277,8 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jCreateCost.setText("");
         jCreatePrice.setText("");
         jCreateQuant.setText("");
+        jStatus.setText("");
     }//GEN-LAST:event_formWindowOpened
-
-    private void jDialog1WindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jDialog1WindowOpened
-        // TODO add your handling code here:
-        jDialog1.setSize(230, 90);
-        jDialog1.setLocation(375, 300);
-    }//GEN-LAST:event_jDialog1WindowOpened
 
     /**
      * @param args the command line arguments
@@ -356,14 +322,14 @@ public class CreateWidgetForm extends javax.swing.JFrame {
     private javax.swing.JTextField jCreateName;
     private javax.swing.JTextField jCreatePrice;
     private javax.swing.JTextField jCreateQuant;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jStatus;
     // End of variables declaration//GEN-END:variables
 }
