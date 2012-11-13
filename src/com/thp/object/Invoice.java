@@ -17,9 +17,9 @@ public class Invoice {
     int salespersonId;
     int widgetId;
     int quantity;
-    Date invoiceDate;
+    Date issueDate;
     String termsCode;
-    Date shipDate;
+    Date paymentDueDate;
     double subtotal;
     double tax;
     double discount;
@@ -40,16 +40,16 @@ public class Invoice {
     }
     
     public void setInvoice(int invId, int custId, int spId, int wId,
-                    int qty, Date invDate, String tCode, Date sDate,
+                    int qty, Date invDate, String tCode, Date pDate,
                     double subtot, double tAmount, double dAmount, double totAmount, double bal){
         setInvoiceId(invId);
         setCustomerId(custId);
         setSalespersonId(spId);
         setWidgetId(wId);
         setQuantity(qty);
-        setInvoiceDate(invDate);
+        setIssueDate(invDate);
         setTermsCode(tCode);
-        setShipDate(sDate);
+        setPaymentDueDate(pDate);
         setSubtotal(subtot);
         setTax(tAmount);
         setDiscount(dAmount);
@@ -72,14 +72,14 @@ public class Invoice {
     public void setQuantity(int qty){
         quantity = qty;
     }
-    public void setInvoiceDate(Date invDate){
-        invoiceDate = invDate;
+    public void setIssueDate(Date invDate){
+        issueDate = invDate;
     }
     public void setTermsCode(String tCode){
         termsCode = tCode;
     }
-    public void setShipDate(Date sDate){
-        shipDate = sDate;
+    public void setPaymentDueDate(Date pDate){
+        paymentDueDate = pDate;
     }
     public void setSubtotal(double subtot){
         subtotal = subtot;
@@ -113,14 +113,14 @@ public class Invoice {
     public int getQuantity(){
         return quantity;
     }
-    public Date getInvoiceDate(){
-        return invoiceDate;
+    public Date getIssueDate(){
+        return issueDate;
     }
     public String getTermsCode(){
         return termsCode;
     }
-    public Date getShipDate(){
-        return shipDate;
+    public Date getPaymentDueDate(){
+        return paymentDueDate;
     }
     public double getSubtotal(){
         return subtotal;
