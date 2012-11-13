@@ -65,7 +65,7 @@ public class SalespersonControl {
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 sp.setId(rs.getInt("ID"));
-                sp.setSalesperson(rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getLong("PHONE"));
+                sp.setSalesperson(rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("PHONE"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);

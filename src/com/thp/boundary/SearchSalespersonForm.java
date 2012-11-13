@@ -274,11 +274,11 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
             String ln = name[1];
 
             Salesperson salesperson = new Salesperson();
-            salesperson.setSalesperson(fn, ln, 0);
+            salesperson.setSalesperson(fn, ln, "");
             salesperson = SalespersonControl.searchSalesperson(salesperson);
             this.jEditFirstNameTxt.setText(salesperson.getFirstName());
             this.jEditLastNameTxt.setText(salesperson.getLastName());
-            this.jEditPhoneTxt.setText(Long.toString(salesperson.getPhone()));
+            this.jEditPhoneTxt.setText(salesperson.getPhone());
         }
         else{
             this.jStatusMsg.setText("Error. Enter the full name.");
@@ -293,7 +293,7 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
 
     private void jEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditBtnMouseClicked
         // TODO add your handling code here:
-        Salesperson salesperson = new Salesperson(this.jEditFirstNameTxt.getText(), this.jEditLastNameTxt.getText(),Long.parseLong(this.jEditPhoneTxt.getText()));
+        Salesperson salesperson = new Salesperson(this.jEditFirstNameTxt.getText(), this.jEditLastNameTxt.getText(), this.jEditPhoneTxt.getText());
         SalespersonControl.editSalesperson(salesperson);
     }//GEN-LAST:event_jEditBtnMouseClicked
 

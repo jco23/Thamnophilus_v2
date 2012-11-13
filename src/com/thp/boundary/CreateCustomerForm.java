@@ -70,15 +70,18 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jLastNameTxt = new javax.swing.JTextField();
         jCompanyTxt = new javax.swing.JTextField();
         jNameLbl = new javax.swing.JLabel();
+        jCustTypeRdo = new javax.swing.JPanel();
+        jCustRdo = new javax.swing.JRadioButton();
+        jCompanyRdo = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jTitleLbl1 = new javax.swing.JLabel();
         jPriceLbl1 = new javax.swing.JLabel();
-        jFaxTxt = new javax.swing.JTextField();
         jEmailTxt = new javax.swing.JTextField();
         jNameLbl1 = new javax.swing.JLabel();
         jContactTxt = new javax.swing.JTextField();
         jNameLbl2 = new javax.swing.JLabel();
         jPhoneTxt = new javax.swing.JFormattedTextField();
+        jFaxTxt = new javax.swing.JFormattedTextField();
         jPanel6 = new javax.swing.JPanel();
         jTitleLbl2 = new javax.swing.JLabel();
         jPriceLbl2 = new javax.swing.JLabel();
@@ -90,9 +93,9 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jSalespersonCb = new javax.swing.JComboBox();
         jNameLbl5 = new javax.swing.JLabel();
         jNameLbl6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jCreateBtn = new javax.swing.JButton();
         jCancelBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -101,14 +104,15 @@ public class CreateCustomerForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Customer Information"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jPreferenceRdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        buttonGroup1.add(jByEmailRdo);
+        jByEmailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jByEmailRdo.setSelected(true);
         jByEmailRdo.setText("By Email");
 
-        buttonGroup1.add(jByMailRdo);
+        jByMailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jByMailRdo.setText("By Mail");
 
         javax.swing.GroupLayout jPreferenceRdoLayout = new javax.swing.GroupLayout(jPreferenceRdo);
@@ -131,20 +135,25 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jTypeLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTypeLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jTypeLbl.setText("Billing Receipt:");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sold To Address"));
 
+        jLocationLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl.setText("Address:");
 
+        jLocationLbl1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl1.setText("City:");
 
+        jLocationLbl2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl2.setText("State:");
 
+        jLocationLbl3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl3.setText("Zip Code:");
 
@@ -171,9 +180,9 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSoldCityTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jSoldStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLocationLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSoldStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLocationLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSoldZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSoldAddressTxt))
@@ -201,15 +210,19 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ship To Address"));
 
+        jLocationLbl4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl4.setText("Address:");
 
+        jLocationLbl5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl5.setText("City:");
 
+        jLocationLbl6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl6.setText("State:");
 
+        jLocationLbl7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl7.setText("Zip Code:");
 
@@ -236,9 +249,9 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jShipCityTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jShipStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLocationLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jShipStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLocationLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jShipZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jShipAddressTxt))
@@ -266,14 +279,66 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Basic Information"));
 
+        jTitleLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTitleLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jTitleLbl.setText("First Name:");
 
+        jPriceLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPriceLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPriceLbl.setText("Last Name:");
 
+        jCompanyTxt.setEnabled(false);
+
+        jNameLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl.setText("Company:");
+
+        jCustTypeRdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jCustRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCustRdo.setSelected(true);
+        jCustRdo.setText("Customer");
+        jCustRdo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCustRdoActionPerformed(evt);
+            }
+        });
+        jCustRdo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jCustRdoFocusGained(evt);
+            }
+        });
+
+        jCompanyRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCompanyRdo.setText("Company");
+        jCompanyRdo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCompanyRdoActionPerformed(evt);
+            }
+        });
+        jCompanyRdo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jCompanyRdoFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jCustTypeRdoLayout = new javax.swing.GroupLayout(jCustTypeRdo);
+        jCustTypeRdo.setLayout(jCustTypeRdoLayout);
+        jCustTypeRdoLayout.setHorizontalGroup(
+            jCustTypeRdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jCustTypeRdoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCustRdo)
+                .addGap(18, 18, 18)
+                .addComponent(jCompanyRdo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jCustTypeRdoLayout.setVerticalGroup(
+            jCustTypeRdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jCustTypeRdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jCustRdo)
+                .addComponent(jCompanyRdo))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -281,21 +346,25 @@ public class CreateCustomerForm extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPriceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTitleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                    .addComponent(jNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jCompanyTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLastNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jFirstNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCustTypeRdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPriceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTitleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                            .addComponent(jNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jCompanyTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLastNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFirstNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addComponent(jCustTypeRdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTitleLbl)
                     .addComponent(jFirstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -303,29 +372,39 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPriceLbl)
                     .addComponent(jLastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCompanyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jNameLbl))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contact Information"));
 
+        jTitleLbl1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTitleLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jTitleLbl1.setText("Phone #:");
 
+        jPriceLbl1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPriceLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPriceLbl1.setText("Fax:");
 
+        jNameLbl1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl1.setText("Email:");
 
+        jNameLbl2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl2.setText("Contact:");
 
         try {
             jPhoneTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFaxTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(###) ###-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -343,10 +422,10 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                     .addComponent(jNameLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jEmailTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                    .addComponent(jFaxTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jEmailTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jContactTxt)
-                    .addComponent(jPhoneTxt))
+                    .addComponent(jPhoneTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(jFaxTxt, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -375,20 +454,24 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sales Information"));
 
+        jTitleLbl2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTitleLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jTitleLbl2.setText("Salesperson:");
 
+        jPriceLbl2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPriceLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPriceLbl2.setText("Terms Code:");
 
+        jNameLbl3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl3.setText("Discount:");
 
+        jNameLbl4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl4.setText("Sales Tax:");
 
         jTermsCodeCb.setEditable(true);
-        jTermsCodeCb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "End of the Month", "30", "60" }));
+        jTermsCodeCb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "END OF THE MONTH", "30 DAYS", "60 DAYS" }));
 
         jSalespersonCb.setEditable(true);
 
@@ -407,19 +490,19 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jNameLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPriceLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTitleLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                    .addComponent(jTitleLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jNameLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jDiscountRateTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTaxRateTxt)
-                    .addComponent(jTermsCodeCb, 0, 171, Short.MAX_VALUE)
-                    .addComponent(jSalespersonCb, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTermsCodeCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSalespersonCb, javax.swing.GroupLayout.Alignment.LEADING, 0, 171, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jNameLbl5)
                     .addComponent(jNameLbl6))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,34 +529,51 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        jCreateBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCreateBtn.setText("Create");
+        jCreateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCreateBtnMouseClicked(evt);
+            }
+        });
+
+        jCancelBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCancelBtn.setText("Cancel");
+        jCancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCancelBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTypeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPreferenceRdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(42, 42, 42))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTypeLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPreferenceRdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,111 +584,53 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(80, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTypeLbl)
-                                    .addGap(13, 13, 13))
-                                .addComponent(jPreferenceRdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTypeLbl, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPreferenceRdo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCreateBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("CREATE NEW CUSTOMER");
 
-        jCreateBtn.setText("Create");
-        jCreateBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCreateBtnMouseClicked(evt);
-            }
-        });
-
-        jCancelBtn.setText("Cancel");
-        jCancelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCancelBtnMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(703, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(263, 263, 263))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
-                .addComponent(jCreateBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jCreateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateBtnMouseClicked
-        // TODO add your handling code here:
-        //pass each data item into the database
-            Customer cust;
-        try {
-            cust = new Customer();
-            cust.setCustomer(this.jFirstNameTxt.getText(), 
-                            this.jLastNameTxt.getText(),
-                            this.jCompanyTxt.getText(),
-                            Long.parseLong(this.jPhoneTxt.getText().replaceAll("[-()]", "")),
-                            Long.parseLong(this.jFaxTxt.getText()),
-                            this.jEmailTxt.getText(),
-                            this.jContactTxt.getText(),
-                            this.jSoldAddressTxt.getText(),
-                            this.jSoldCityTxt.getText(),
-                            this.jSoldStateCb.getSelectedItem().toString(),
-                            this.jSoldZipCodeCb.getSelectedItem().toString(),
-                            this.jShipAddressTxt.getText(),
-                            this.jShipCityTxt.getText(),
-                            this.jShipStateCb.getSelectedItem().toString(), 
-                            this.jShipZipCodeCb.getSelectedItem().toString(),
-                            this.jByEmailRdo.isSelected(),
-                            this.jSalespersonCb.getSelectedItem().toString(),
-                            this.jTermsCodeCb.getSelectedItem().toString(),
-                            Integer.parseInt(this.jDiscountRateTxt.getText()),
-                            Double.parseDouble(this.jTaxRateTxt.getText()));
-            CustomerControl.createCustomer(cust);
-         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jCreateBtnMouseClicked
-
-    private void jCancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCancelBtnMouseClicked
-        // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jCancelBtnMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -612,6 +654,68 @@ public class CreateCustomerForm extends javax.swing.JFrame {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jCustRdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCustRdoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCustRdoActionPerformed
+
+    private void jCustRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCustRdoFocusGained
+        // TODO add your handling code here:
+        this.jFirstNameTxt.setEnabled(true);
+        this.jLastNameTxt.setEnabled(true);
+        this.jCompanyTxt.setText("");
+        this.jCompanyTxt.setEnabled(false);
+    }//GEN-LAST:event_jCustRdoFocusGained
+
+    private void jCompanyRdoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCompanyRdoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCompanyRdoActionPerformed
+
+    private void jCompanyRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCompanyRdoFocusGained
+        // TODO add your handling code here:
+        this.jFirstNameTxt.setText("");
+        this.jFirstNameTxt.setEnabled(false);
+        this.jLastNameTxt.setText("");
+        this.jLastNameTxt.setEnabled(false);
+        this.jCompanyTxt.setEnabled(true);
+    }//GEN-LAST:event_jCompanyRdoFocusGained
+
+    private void jCreateBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateBtnMouseClicked
+        // TODO add your handling code here:
+        //pass each data item into the database
+        Customer cust;
+        try {
+            cust = new Customer();
+            cust.setCustomer(this.jFirstNameTxt.getText(),
+                this.jLastNameTxt.getText(),
+                this.jCompanyTxt.getText(),
+                Long.parseLong(this.jPhoneTxt.getText().replaceAll("[-()]", "")),
+                Long.parseLong(this.jFaxTxt.getText()),
+                this.jEmailTxt.getText(),
+                this.jContactTxt.getText(),
+                this.jSoldAddressTxt.getText(),
+                this.jSoldCityTxt.getText(),
+                this.jSoldStateCb.getSelectedItem().toString(),
+                this.jSoldZipCodeCb.getSelectedItem().toString(),
+                this.jShipAddressTxt.getText(),
+                this.jShipCityTxt.getText(),
+                this.jShipStateCb.getSelectedItem().toString(),
+                this.jShipZipCodeCb.getSelectedItem().toString(),
+                this.jByEmailRdo.isSelected(),
+                this.jSalespersonCb.getSelectedItem().toString(),
+                this.jTermsCodeCb.getSelectedItem().toString(),
+                Integer.parseInt(this.jDiscountRateTxt.getText()),
+                Double.parseDouble(this.jTaxRateTxt.getText()));
+            CustomerControl.createCustomer(cust);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jCreateBtnMouseClicked
+
+    private void jCancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCancelBtnMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jCancelBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -652,12 +756,15 @@ public class CreateCustomerForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton jByEmailRdo;
     private javax.swing.JRadioButton jByMailRdo;
     private javax.swing.JButton jCancelBtn;
+    private javax.swing.JRadioButton jCompanyRdo;
     private javax.swing.JTextField jCompanyTxt;
     private javax.swing.JTextField jContactTxt;
     private javax.swing.JButton jCreateBtn;
+    private javax.swing.JRadioButton jCustRdo;
+    private javax.swing.JPanel jCustTypeRdo;
     private javax.swing.JTextField jDiscountRateTxt;
     private javax.swing.JTextField jEmailTxt;
-    private javax.swing.JTextField jFaxTxt;
+    private javax.swing.JFormattedTextField jFaxTxt;
     private javax.swing.JTextField jFirstNameTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jLastNameTxt;

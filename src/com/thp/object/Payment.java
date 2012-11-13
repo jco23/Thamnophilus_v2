@@ -12,16 +12,16 @@ public class Payment {
     int paymentId;
     int invoiceId;
     double amountPaid;
-    Date paymentDate;
+    String paymentDate;
     
     public Payment(){
         setPayment(0,0,null);
     }
-    public Payment(int invId, double amtPaid, Date date)
+    public Payment(int invId, double amtPaid, String date)
     {
         setPayment(invId, amtPaid, date);
     }
-    public void setPayment(int invId, double amtPaid, Date pDate){
+    public void setPayment(int invId, double amtPaid, String pDate){
         setInvoiceId(invId);
         setAmountPaid(amtPaid);
         setPaymentDate(pDate);
@@ -36,7 +36,7 @@ public class Payment {
     public void setAmountPaid(double amtPaid){
         amountPaid = amtPaid;
     }
-    public void setPaymentDate(Date pDate){
+    public void setPaymentDate(String pDate){
         paymentDate = pDate;
     }
     
@@ -49,7 +49,7 @@ public class Payment {
     public double getAmountPaid(){
         return amountPaid;
     }
-    public Date getPaymentDate(){
+    public String getPaymentDate(){
         return paymentDate;
     }
     

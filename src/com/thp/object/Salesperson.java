@@ -9,18 +9,18 @@ package com.thp.object;
  * @author user
  */
 public class Salesperson extends Person{
-    public static final int MAX_PHONE=10;
+    public static final int MAX_PHONE=14;
     int id;
-    long phone;
+    String phone;
 
     public Salesperson(){
-        setSalesperson("","",0);
+        setSalesperson("","","");
     }
 
-    public Salesperson(String fn, String ln, long tel){
+    public Salesperson(String fn, String ln, String tel){
         setSalesperson(fn, ln, tel);
     }
-    public void setSalesperson(String fn, String ln, long tel) {
+    public void setSalesperson(String fn, String ln, String tel) {
         setPerson(fn, ln);
         setPhone(tel);
     }
@@ -29,10 +29,10 @@ public class Salesperson extends Person{
     public void setId(int sid){
         id = sid;
     }
-    public void setPhone(long tel){
-        if(tel < 0){
-            System.out.println("Phone number is negative. Will be set to 0");
-            phone = 0000000000;
+    public void setPhone(String tel){
+        if(tel.length() > MAX_PHONE){
+            System.out.println("Phone number exceeds 10 digits. Will be set to null.");
+            phone = "";
         }
         else{
             phone = tel;
@@ -42,9 +42,8 @@ public class Salesperson extends Person{
         return id;
     }
 
-    public long getPhone(){
+    public String getPhone(){
         return phone;
     }  
-
 
 }
