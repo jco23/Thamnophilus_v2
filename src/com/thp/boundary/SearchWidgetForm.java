@@ -3,6 +3,7 @@ package com.thp.boundary;
 
 import com.thp.control.WidgetControl;
 import com.thp.object.Widget;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -54,6 +55,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         jSaveEdit = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jMatchStatus = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -122,55 +124,64 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         jMatchStatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jMatchStatus.setText("jTextField1");
 
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Edit information if necessary");
+
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addGap(86, 86, 86)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(78, 78, 78)
-                .addComponent(jLabel7)
-                .addGap(53, 53, 53))
             .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame1Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(jMatchOk, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(34, 34, 34)
                         .addComponent(jSaveEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel3)))
+                .addContainerGap())
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jMatchId, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(jMatchStatus))
+                        .addGap(33, 33, 33))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
                         .addComponent(jMatchName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jMatchCost, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jMatchQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jMatchDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jMatchId, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(jMatchStatus))
-                .addGap(33, 33, 33))
+                        .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jMatchQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                            .addGroup(jFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel5)
+                                .addGap(93, 93, 93)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(56, 56, 56))))))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +189,8 @@ public class SearchWidgetForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
@@ -189,7 +202,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
                     .addComponent(jMatchCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMatchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMatchQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
@@ -339,7 +352,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
 
     private void jFrame1WindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jFrame1WindowOpened
         // TODO add your handling code here:
-        jFrame1.setSize(445,270);
+        jFrame1.setSize(445,325);
         jFrame1.setLocation(80,200);
         jMatchStatus.setText("");
     }//GEN-LAST:event_jFrame1WindowOpened
@@ -360,15 +373,58 @@ public class SearchWidgetForm extends javax.swing.JFrame {
 
     private void jSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSaveEditActionPerformed
         // TODO add your handling code here:
-        Widget search = new Widget();
-        search.setWidgetId(Long.parseLong(this.jMatchId.getText()));
-        search.setName(this.jMatchName.getText().toUpperCase());
-        search.setDescription(this.jMatchDescription.getText());
-        search.setUnitCostPrice(Double.parseDouble(this.jMatchCost.getText()));
-        search.setUnitSellPrice(Double.parseDouble(this.jMatchPrice.getText()));
-        search.setQuantity(Integer.parseInt(this.jMatchQuantity.getText()));
-        String message = WidgetControl.editWidget(search);
-        this.jMatchStatus.setText(message);
+        String pattern = "[^0-9]*";
+        Boolean errorstatus = false;
+        this.jLabel7.setVisible(false);
+        this.jLabel9.setVisible(false);
+        this.jLabel10.setVisible(false);
+        if(this.jMatchName.getText().isEmpty() || this.jMatchName.getText().length() > 30 ||
+                this.jMatchDescription.getText().isEmpty() || this.jMatchDescription.getText(). length() > 30 ||
+                this.jMatchCost.getText().isEmpty() || this.jMatchCost.getText().length() > 6 ||
+                this.jMatchPrice.getText().isEmpty() || this.jMatchPrice.getText().length() > 7 ||
+                this.jMatchQuantity.getText().isEmpty() || this.jMatchQuantity.getText().length() > 3)
+        {
+            this.jMatchName.requestFocus();
+            this.jMatchStatus.setBackground(Color.pink);
+            this.jMatchStatus.setText("BOUNDARY ERROR");
+            errorstatus = true;
+        }
+        if(this.jMatchCost.getText().matches(pattern))
+        {
+            this.jMatchCost.setBackground(Color.pink);
+            this.jMatchStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(this.jMatchPrice.getText().matches(pattern))
+        {
+            this.jMatchPrice.setBackground(Color.pink);
+            this.jMatchStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(this.jMatchQuantity.getText().matches(pattern))
+        {
+            this.jMatchQuantity.setBackground(Color.pink);
+            this.jMatchStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(errorstatus == false)
+        {
+            Widget search = new Widget();
+            search.setWidgetId(Long.parseLong(this.jMatchId.getText()));
+            search.setName(this.jMatchName.getText().toUpperCase());
+            search.setDescription(this.jMatchDescription.getText());
+            search.setUnitCostPrice(Double.parseDouble(this.jMatchCost.getText()));
+            search.setUnitSellPrice(Double.parseDouble(this.jMatchPrice.getText()));
+            search.setQuantity(Integer.parseInt(this.jMatchQuantity.getText()));
+            String message = WidgetControl.editWidget(search);
+            this.jMatchStatus.setBackground(Color.white);
+            this.jMatchName.setBackground(Color.white);
+            this.jMatchDescription.setBackground(Color.white);
+            this.jMatchCost.setBackground(Color.white);
+            this.jMatchPrice.setBackground(Color.white);
+            this.jMatchQuantity.setBackground(Color.white);
+            this.jMatchStatus.setText(message);
+        }
     }//GEN-LAST:event_jSaveEditActionPerformed
 
     /**
@@ -411,6 +467,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

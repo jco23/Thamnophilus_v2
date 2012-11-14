@@ -45,6 +45,9 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jCancel = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jStatus = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -123,7 +126,17 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Status:");
 
+        jStatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jStatus.setText("jTextField1");
+
+        jLabel7.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel7.setText("YOU SHOULD PUT A NUMBER HERE");
+
+        jLabel9.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel9.setText("YOU SHOULD PUT A NUMBER HERE");
+
+        jLabel10.setForeground(new java.awt.Color(255, 153, 153));
+        jLabel10.setText("YOU SHOULD PUT A NUMBER HERE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,57 +152,66 @@ public class CreateWidgetForm extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCreateName, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(jCreateDesc)
-                    .addComponent(jCreateCost)
-                    .addComponent(jCreatePrice)
-                    .addComponent(jCreateQuant))
-                .addGap(108, 108, 108)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCreateName, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(jCreateDesc)
+                            .addComponent(jCreateCost)
+                            .addComponent(jCreatePrice)
+                            .addComponent(jCreateQuant)
+                            .addComponent(jCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(jCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel10))))))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCreateName)
-                        .addComponent(jCreate))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jCreateName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jCreateDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jCreateDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCreateCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCreatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCreateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(167, Short.MAX_VALUE))
+                    .addComponent(jCreateCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCreatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCreateQuant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCreate)
+                    .addComponent(jCancel))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,17 +246,41 @@ public class CreateWidgetForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jCreateNameActionPerformed
 
     private void jCreateMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateMouseReleased
-        // TODO add your handling code here:
+        // WRITE CODE TO DETECT STRINGS IN FIELDS THAT REQUIRE NUMBERS:
+        String pattern = "[^0-9]*";
+        Boolean errorstatus = false;
+        this.jLabel7.setVisible(false);
+        this.jLabel9.setVisible(false);
+        this.jLabel10.setVisible(false);
         if(this.jCreateName.getText().isEmpty() || this.jCreateName.getText().length() > 30 ||
                 this.jCreateDesc.getText().isEmpty() || this.jCreateDesc.getText(). length() > 30 ||
                 this.jCreateCost.getText().isEmpty() || this.jCreateCost.getText().length() > 6 ||
                 this.jCreatePrice.getText().isEmpty() || this.jCreatePrice.getText().length() > 7 ||
-                this.jCreateQuant.getText().isEmpty() || this.jCreateQuant.getText().length() > 10000)
+                this.jCreateQuant.getText().isEmpty() || this.jCreateQuant.getText().length() > 3)
         {
             this.jCreateName.requestFocus();
-            this.jStatus.setText("ERROR");
+            this.jStatus.setText("BOUNDARY ERROR");
+            errorstatus = true;
         }
-        else
+        if(this.jCreateCost.getText().matches(pattern))
+        {
+            this.jLabel7.setVisible(true);
+            this.jStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(this.jCreatePrice.getText().matches(pattern))
+        {
+            this.jLabel9.setVisible(true);
+            this.jStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(this.jCreateQuant.getText().matches(pattern))
+        {
+            this.jLabel10.setVisible(true);
+            this.jStatus.setText("INPUT ERROR");
+            errorstatus = true;
+        }
+        if(errorstatus==false)
         {
             Widget w = new Widget(this.jCreateName.getText().toUpperCase(), this.jCreateDesc.getText(),
                     Double.parseDouble(this.jCreateCost.getText()), Double.parseDouble(this.jCreatePrice.getText()), 
@@ -242,6 +288,9 @@ public class CreateWidgetForm extends javax.swing.JFrame {
             String message = WidgetControl.createWidget(w);
 
             this.jStatus.setText(message);
+            this.jLabel7.setVisible(false);
+            this.jLabel9.setVisible(false);
+            this.jLabel10.setVisible(false);
         }
     }//GEN-LAST:event_jCreateMouseReleased
 
@@ -278,6 +327,9 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jCreatePrice.setText("");
         jCreateQuant.setText("");
         jStatus.setText("");
+        jLabel7.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -323,12 +375,15 @@ public class CreateWidgetForm extends javax.swing.JFrame {
     private javax.swing.JTextField jCreatePrice;
     private javax.swing.JTextField jCreateQuant;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jStatus;
     // End of variables declaration//GEN-END:variables
