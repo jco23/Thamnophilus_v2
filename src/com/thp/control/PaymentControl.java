@@ -23,8 +23,8 @@ public class PaymentControl {
             String sql = "INSERT INTO APP.PAYMENTS(paymentID, invoiceID, amountPaid, paymentDate) VALUES(" +
                     pment.getPaymentId() + ", " +
                     pment.getInvoiceId() + ", " +
-                    pment.getAmountPaid() + ", " +
-                    pment.getPaymentDate() +")";
+                    pment.getAmountPaid() + ", '" +
+                    pment.getPaymentDate() +"')";
             stmt.executeUpdate(sql);
             return "Payment successfully entered";
         }catch (SQLException ex) {

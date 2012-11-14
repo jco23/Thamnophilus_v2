@@ -35,6 +35,8 @@ public class Switchboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jCreateC_btn = new javax.swing.JButton();
         jEditC_btn = new javax.swing.JButton();
@@ -76,6 +78,19 @@ public class Switchboard extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Account Receivable");
@@ -725,10 +740,12 @@ public class Switchboard extends javax.swing.JFrame {
     private javax.swing.JLabel jReports_Label3;
     private javax.swing.JLabel jReports_Label4;
     private javax.swing.JLabel jSalesperson_Label;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSearchC_btn;
     private javax.swing.JButton jSearchI_btn;
     private javax.swing.JButton jSearchS_btn;
     private javax.swing.JButton jSearchW_btn;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel jWidgets_Label;
     // End of variables declaration//GEN-END:variables
 }

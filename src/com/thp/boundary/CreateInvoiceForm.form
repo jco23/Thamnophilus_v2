@@ -49,6 +49,8 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="java.awt.Canvas" name="canvas1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
@@ -491,7 +493,6 @@
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTermsCode" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>

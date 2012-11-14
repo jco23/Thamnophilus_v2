@@ -309,6 +309,7 @@
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSearchWidgetMouseClicked"/>
         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jSearchWidgetMouseReleased"/>
       </Events>
     </Component>

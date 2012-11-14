@@ -214,6 +214,9 @@ public class EditWidgetForm extends javax.swing.JFrame {
 
         jSearchWidget.setText("Search");
         jSearchWidget.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSearchWidgetMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jSearchWidgetMouseReleased(evt);
             }
@@ -394,6 +397,10 @@ public class EditWidgetForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDesiredWidget.setText("");
     }//GEN-LAST:event_formWindowOpened
+
+    private void jSearchWidgetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchWidgetMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSearchWidgetMouseClicked
 
     /**
      * @param args the command line arguments
