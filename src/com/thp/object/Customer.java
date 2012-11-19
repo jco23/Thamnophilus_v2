@@ -26,8 +26,8 @@ public class Customer extends Person {
     String shipToCity;
     String shipToState;
     int shipToZipCode;
-    long phone;
-    long fax;
+    String phone;
+    String fax;
     String email;
     String contact;
     boolean preference;
@@ -37,14 +37,15 @@ public class Customer extends Person {
     int salespersonId;
     
     public Customer() throws SQLException{
-        setCustomer("","","",0,0,"","","","","","","","","","",true,"","",0,0);
+        setCustomer(true,"","","","","","","","","","","","","","","",true,"","",0,0);
     }
 
-    public Customer(String fn, 
+    public Customer(boolean cType,
+                    String fn, 
                     String ln, 
                     String cp, 
-                    long tel, 
-                    long fax, 
+                    String tel, 
+                    String fax, 
                     String em, 
                     String ct, 
                     String soldAddr, 
@@ -60,14 +61,15 @@ public class Customer extends Person {
                     String terms, 
                     int dRate, 
                     double tRate) throws SQLException {
-        setCustomer(fn,ln,cp,tel,fax,em,ct,soldAddr,soldCity,soldState,soldZip,shipAddr,shipCity, shipState,shipZip,pref,sp,terms,dRate,tRate);
+        setCustomer(cType,fn,ln,cp,tel,fax,em,ct,soldAddr,soldCity,soldState,soldZip,shipAddr,shipCity, shipState,shipZip,pref,sp,terms,dRate,tRate);
     }
  //Set functions
-    public void setCustomer(String fn,
+    public void setCustomer(boolean cType,
+                            String fn,
                             String ln,
                             String cp,
-                            long tel,
-                            long fx,
+                            String tel,
+                            String fx,
                             String em,
                             String ct,
                             String soldAddr,
@@ -83,6 +85,7 @@ public class Customer extends Person {
                             String terms,
                             int dRate,
                             double tRate) throws SQLException{
+        setCustType(cType);
         setPerson(fn, ln);
         setPhone(tel);
         setFax(fx);
@@ -106,10 +109,10 @@ public class Customer extends Person {
     public void setCustomerName(String fn, String ln){
         setPerson(fn, ln);
     }
-    public void setPhone(long tel){
+    public void setPhone(String tel){
         phone=tel;
     }
-    public void setFax(long fx){
+    public void setFax(String fx){
         fax=fx;
     }
     
@@ -160,14 +163,13 @@ public class Customer extends Person {
     public int getCustType(){
         return type;
     }
-
-    public long getPhone(){
-        return phone;
-    }
     public String getCompany(){
         return company;
     }
-    public long getFax(){
+    public String getPhone(){
+        return phone;
+    }
+    public String getFax(){
         return fax;
     }
     public String getEmail(){

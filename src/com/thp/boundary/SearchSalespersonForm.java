@@ -3,6 +3,7 @@ package com.thp.boundary;
 
 import com.thp.control.SalespersonControl;
 import com.thp.object.Salesperson;
+import java.awt.Color;
 
 /*
  * To change this template, choose Tools | Templates
@@ -35,7 +36,6 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jCreateBtn = new javax.swing.JButton();
-        jEditBtn = new javax.swing.JButton();
         jNameTxt = new javax.swing.JTextField();
         jTitleLbl = new javax.swing.JLabel();
         jSearchBtn = new javax.swing.JButton();
@@ -47,13 +47,10 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jEditLastNameTxt = new javax.swing.JTextField();
         jNameLbl1 = new javax.swing.JLabel();
         jEditPhoneTxt = new javax.swing.JTextField();
+        jEditBtn = new javax.swing.JButton();
         jCancelBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jStatusMsg = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jStatusMsg = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -71,10 +68,9 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
             }
         });
 
-        jEditBtn.setText("Edit");
-        jEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jEditBtnMouseClicked(evt);
+        jNameTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jNameTxtKeyTyped(evt);
             }
         });
 
@@ -93,19 +89,14 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(425, 425, 425)
-                        .addComponent(jEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jTitleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addComponent(jTitleLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(jCreateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,9 +112,7 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                             .addComponent(jTitleLbl)
                             .addComponent(jNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSearchBtn))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jEditBtn)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -140,6 +129,13 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jNameLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl1.setText("Phone:");
 
+        jEditBtn.setText("Edit");
+        jEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jEditBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -155,7 +151,9 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                     .addComponent(jEditLastNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jEditFirstNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +169,8 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNameLbl1)
-                    .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jEditBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -185,28 +184,6 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Status:");
 
-        jStatusMsg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jStatusMsg.setText("None");
-
-        jMenu1.setText("File");
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Quit");
-        jMenuItem1.setActionCommand("jMenu_quit");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,7 +194,7 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jStatusMsg)
+                        .addComponent(jStatusMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,28 +211,23 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 306, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jStatusMsg)))
+                            .addComponent(jStatusMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -270,15 +242,29 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         //pass each data item into the database
         String [] name = this.jNameTxt.getText().split(" ");
         if(name.length == 2){
-            String fn = name[0];
-            String ln = name[1];
+            String fn = name[0].toUpperCase();
+            String ln = name[1].toUpperCase();
 
             Salesperson salesperson = new Salesperson();
             salesperson.setSalesperson(fn, ln, "");
             salesperson = SalespersonControl.searchSalesperson(salesperson);
-            this.jEditFirstNameTxt.setText(salesperson.getFirstName());
-            this.jEditLastNameTxt.setText(salesperson.getLastName());
-            this.jEditPhoneTxt.setText(salesperson.getPhone());
+            if(!salesperson.getPhone().equals("")){
+                this.jEditFirstNameTxt.setText(salesperson.getFirstName());
+                this.jEditLastNameTxt.setText(salesperson.getLastName());
+                this.jEditPhoneTxt.setText(salesperson.getPhone());
+                this.jStatusMsg.setText("Salesperson found.");
+                this.jStatusMsg.setForeground(Color.GREEN);
+            }
+            else
+            {
+                this.jStatusMsg.setText("Error. Salesperson is not in database.");
+                this.jStatusMsg.setForeground(Color.red);           
+                this.jEditFirstNameTxt.setText("");
+                this.jEditLastNameTxt.setText("");
+                this.jEditPhoneTxt.setText("");
+                this.jNameTxt.requestFocus();
+                this.jNameTxt.setBackground(Color.pink);
+            }
         }
         else{
             this.jStatusMsg.setText("Error. Enter the full name.");
@@ -302,6 +288,12 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         this.setVisible(false);
         new CreateSalespersonForm().setVisible(true);
     }//GEN-LAST:event_jCreateBtnMouseClicked
+
+    private void jNameTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNameTxtKeyTyped
+        // TODO add your handling code here:
+        this.jStatusMsg.setText("");
+        this.jNameTxt.setBackground(Color.white);
+    }//GEN-LAST:event_jNameTxtKeyTyped
 
     /**
      * @param args the command line arguments
@@ -346,17 +338,13 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
     private javax.swing.JTextField jEditPhoneTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel jNameLbl1;
     public javax.swing.JTextField jNameTxt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel jPriceLbl1;
     private javax.swing.JButton jSearchBtn;
-    private javax.swing.JLabel jStatusMsg;
+    private javax.swing.JTextField jStatusMsg;
     private javax.swing.JLabel jTitleLbl;
     private javax.swing.JLabel jTitleLbl1;
     // End of variables declaration//GEN-END:variables
