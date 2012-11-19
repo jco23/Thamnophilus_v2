@@ -35,6 +35,8 @@ public class Switchboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jCreateC_btn = new javax.swing.JButton();
         jEditC_btn = new javax.swing.JButton();
@@ -48,7 +50,7 @@ public class Switchboard extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jInvoices_Label = new javax.swing.JLabel();
         jCreateI_btn = new javax.swing.JButton();
-        jDeleteI_bt = new javax.swing.JButton();
+        jEditI_bt = new javax.swing.JButton();
         jSearchI_btn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jSalesperson_Label = new javax.swing.JLabel();
@@ -76,6 +78,19 @@ public class Switchboard extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Account Receivable");
@@ -204,10 +219,15 @@ public class Switchboard extends javax.swing.JFrame {
             }
         });
 
-        jDeleteI_bt.setText("Delete");
-        jDeleteI_bt.addMouseListener(new java.awt.event.MouseAdapter() {
+        jEditI_bt.setText("Edit");
+        jEditI_bt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDeleteI_btMouseClicked(evt);
+                jEditI_btMouseClicked(evt);
+            }
+        });
+        jEditI_bt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEditI_btActionPerformed(evt);
             }
         });
 
@@ -231,7 +251,7 @@ public class Switchboard extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSearchI_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCreateI_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDeleteI_bt, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jEditI_bt, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
         jPanel4Layout.setVerticalGroup(
@@ -242,7 +262,7 @@ public class Switchboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCreateI_btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDeleteI_bt)
+                .addComponent(jEditI_bt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSearchI_btn)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -583,11 +603,13 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jSearchI_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchI_btnMouseClicked
         // TODO add your handling code here:
+        new SearchInvoiceForm().setVisible(true);
     }//GEN-LAST:event_jSearchI_btnMouseClicked
 
-    private void jDeleteI_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDeleteI_btMouseClicked
+    private void jEditI_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditI_btMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jDeleteI_btMouseClicked
+        new EditInvoiceForm().setVisible(true);
+    }//GEN-LAST:event_jEditI_btMouseClicked
 
     private void jCreateI_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateI_btnMouseClicked
         // TODO add your handling code here:
@@ -635,6 +657,10 @@ public class Switchboard extends javax.swing.JFrame {
     private void jSearchC_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchC_btnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jSearchC_btnMouseClicked
+
+    private void jEditI_btActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditI_btActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jEditI_btActionPerformed
 
 
     /**
@@ -687,8 +713,8 @@ public class Switchboard extends javax.swing.JFrame {
     private javax.swing.JButton jCreateS_btn;
     private javax.swing.JButton jCreateW_btn;
     private javax.swing.JLabel jCustomer_Label;
-    private javax.swing.JButton jDeleteI_bt;
     private javax.swing.JButton jEditC_btn;
+    private javax.swing.JButton jEditI_bt;
     private javax.swing.JButton jEditS_btn;
     private javax.swing.JButton jEditW_btn;
     private javax.swing.JButton jIndivCustSalesBtn;
@@ -714,10 +740,12 @@ public class Switchboard extends javax.swing.JFrame {
     private javax.swing.JLabel jReports_Label3;
     private javax.swing.JLabel jReports_Label4;
     private javax.swing.JLabel jSalesperson_Label;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSearchC_btn;
     private javax.swing.JButton jSearchI_btn;
     private javax.swing.JButton jSearchS_btn;
     private javax.swing.JButton jSearchW_btn;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel jWidgets_Label;
     // End of variables declaration//GEN-END:variables
 }

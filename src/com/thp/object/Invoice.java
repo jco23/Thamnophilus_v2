@@ -18,6 +18,7 @@ public class Invoice {
     int widgetId;
     int quantity;
     Date issueDate;
+    Date shipDate;
     String termsCode;
     Date paymentDueDate;
     double subtotal;
@@ -28,19 +29,19 @@ public class Invoice {
     
     public Invoice(){
         setInvoice(0, 0, 0, 0,
-                    0, null, "", null,
+                    0, null, null, "", null,
                     0, 0, 0, 0, 0);
     }
     public Invoice(int invId, int custId, int spId, int wId,
-                    int qty, Date invDate, String tCode, Date sDate,
+                    int qty, Date invDate, Date sDate, String tCode, Date pDate,
                     double subtot, double tAmount, double dAmount, double totAmount, double bal){
         setInvoice(invId, custId, spId, wId,
-                    qty, invDate, tCode, sDate,
+                    qty, invDate, sDate, tCode, pDate,
                     subtot, tAmount, dAmount, totAmount, bal);
     }
     
     public void setInvoice(int invId, int custId, int spId, int wId,
-                    int qty, Date invDate, String tCode, Date pDate,
+                    int qty, Date invDate, Date sDate, String tCode, Date pDate,
                     double subtot, double tAmount, double dAmount, double totAmount, double bal){
         setInvoiceId(invId);
         setCustomerId(custId);
@@ -48,6 +49,7 @@ public class Invoice {
         setWidgetId(wId);
         setQuantity(qty);
         setIssueDate(invDate);
+        setShipDate(sDate);
         setTermsCode(tCode);
         setPaymentDueDate(pDate);
         setSubtotal(subtot);
@@ -74,6 +76,9 @@ public class Invoice {
     }
     public void setIssueDate(Date invDate){
         issueDate = invDate;
+    }
+    public void setShipDate(Date sDate){
+        shipDate = sDate;
     }
     public void setTermsCode(String tCode){
         termsCode = tCode;
@@ -116,6 +121,9 @@ public class Invoice {
     public Date getIssueDate(){
         return issueDate;
     }
+    public Date getShipDate(){
+        return shipDate;
+    }
     public String getTermsCode(){
         return termsCode;
     }
@@ -138,5 +146,4 @@ public class Invoice {
         return balance;
     }
     
-                    
 }
