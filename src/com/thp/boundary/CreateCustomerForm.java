@@ -704,10 +704,12 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 this.jSoldCityTxt.getText(),
                 this.jSoldStateCb.getSelectedItem().toString(),
                 this.jSoldZipCodeCb.getSelectedItem().toString(),
-                this.jShipAddressTxt.getText(),
-                this.jShipCityTxt.getText(),
-                this.jShipStateCb.getSelectedItem().toString(),
-                this.jShipZipCodeCb.getSelectedItem().toString(),
+                
+                    this.jShipAddressTxt.getText(),
+                    this.jShipCityTxt.getText(),
+                    this.jShipStateCb.getSelectedItem().toString(),
+                    this.jShipZipCodeCb.getSelectedItem().toString(),
+                
                 this.jByEmailRdo.isSelected(),
                 this.jSalespersonCb.getSelectedItem().toString(),
                 this.jTermsCodeCb.getSelectedItem().toString(),

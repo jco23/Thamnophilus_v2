@@ -31,9 +31,9 @@ public class CustomerControl {
                     "preference, salespersonid, termscode, discount, taxrate) VALUES('" + 
                             cust.getCustType() + ", " + 
                             cust.getFirstName() + "', '" + 
-                            cust.getLastName() + "', " + 
-                            cust.getPhone() + ", '" + 
-                            cust.getFax() + ", " +
+                            cust.getLastName() + "', '" + 
+                            cust.getPhone() + "', '" + 
+                            cust.getFax() + "', '" +
                             cust.getEmail() + "', '" + 
                             cust.getContact() + "', '" + 
                             cust.getSoldToAddress() + "', '" + 
