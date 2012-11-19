@@ -4,6 +4,8 @@
  */
 package com.thp.control;
 
+import com.thp.boundary.CreateCustomerForm;
+import com.thp.object.AccountDB;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -12,6 +14,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.poi.hssf.usermodel.*;
 
 /**
@@ -45,10 +52,46 @@ public class ReportControl {
         
         HSSFRow rowA = firstSheet.createRow(0);
         HSSFCell cellA = rowA.createCell(0);
+        //HEADERS
         for(int i=0;i<16;i++)
         {
            rowA.createCell(i).setCellValue(new HSSFRichTextString(header[i]));
         }
+        try {
+            Statement stmt = AccountDB.conn.createStatement();
+            String sql = "SELECT  c.firstName || ' ' || c.lastName, " +
+        "w.widgetName, " +
+        "YEAR(i.INVOICEDATE), "+
+        "MONTH(i.INVOICEDATE),"+
+        "SUM(i.QTY),"+
+        "SUM(i.QTY) * w.SUNITPRICE, "+
+        "(SUM(i.QTY) * w.SUNITPRICE)-(SUM(i.QTY)*w.CUNITPRICE) "+
+        "FROM invoices AS i "+
+        "INNER JOIN customers AS c ON i.customerID=c.id "+
+        "INNER JOIN widgets AS w ON i.widgetId=w.id "+
+        "GROUP BY c.firstName, "+
+        "        c.lastName, "+
+        "        w.widgetName,"+
+        "        w.SUNITPRICE,"+
+        "        w.CUNITPRICE,"+
+        "MONTH(i.INVOICEDATE),"+
+        "YEAR(i.INVOICEDATE)";
+            ResultSet rs = stmt.executeQuery(sql);
+            int data=1;
+                while(rs.next()){
+                    HSSFRow rowData = firstSheet.createRow(data);
+                    for(int i=1; i<8; i++){
+                        rowData.createCell(i-1).setCellValue(new HSSFRichTextString(rs.getString(i)));
+
+                    }
+                    data++;
+                }
+           
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
  
         //
         // To write out the workbook into a file we need to create an output

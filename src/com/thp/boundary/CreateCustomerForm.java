@@ -39,7 +39,8 @@ public class CreateCustomerForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        typeButtonGroup = new javax.swing.ButtonGroup();
+        prefButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPreferenceRdo = new javax.swing.JPanel();
         jByEmailRdo = new javax.swing.JRadioButton();
@@ -108,10 +109,12 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jPreferenceRdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        prefButtonGroup.add(jByEmailRdo);
         jByEmailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jByEmailRdo.setSelected(true);
         jByEmailRdo.setText("By Email");
 
+        prefButtonGroup.add(jByMailRdo);
         jByMailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jByMailRdo.setText("By Mail");
 
@@ -295,6 +298,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jCustTypeRdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        typeButtonGroup.add(jCustRdo);
         jCustRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCustRdo.setSelected(true);
         jCustRdo.setText("Customer");
@@ -309,6 +313,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
             }
         });
 
+        typeButtonGroup.add(jCompanyRdo);
         jCompanyRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCompanyRdo.setText("Company");
         jCompanyRdo.addActionListener(new java.awt.event.ActionListener() {
@@ -686,21 +691,25 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         Customer cust;
         try {
             cust = new Customer();
-            cust.setCustomer(this.jFirstNameTxt.getText(),
+            cust.setCustomer(
+                this.jCustRdo.isSelected(),
+                this.jFirstNameTxt.getText(),
                 this.jLastNameTxt.getText(),
                 this.jCompanyTxt.getText(),
-                Long.parseLong(this.jPhoneTxt.getText().replaceAll("[-()]", "")),
-                Long.parseLong(this.jFaxTxt.getText()),
+                this.jPhoneTxt.getText(),
+                this.jFaxTxt.getText(),
                 this.jEmailTxt.getText(),
                 this.jContactTxt.getText(),
                 this.jSoldAddressTxt.getText(),
                 this.jSoldCityTxt.getText(),
                 this.jSoldStateCb.getSelectedItem().toString(),
                 this.jSoldZipCodeCb.getSelectedItem().toString(),
-                this.jShipAddressTxt.getText(),
-                this.jShipCityTxt.getText(),
-                this.jShipStateCb.getSelectedItem().toString(),
-                this.jShipZipCodeCb.getSelectedItem().toString(),
+                
+                    this.jShipAddressTxt.getText(),
+                    this.jShipCityTxt.getText(),
+                    this.jShipStateCb.getSelectedItem().toString(),
+                    this.jShipZipCodeCb.getSelectedItem().toString(),
+                
                 this.jByEmailRdo.isSelected(),
                 this.jSalespersonCb.getSelectedItem().toString(),
                 this.jTermsCodeCb.getSelectedItem().toString(),
@@ -752,7 +761,6 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton jByEmailRdo;
     private javax.swing.JRadioButton jByMailRdo;
     private javax.swing.JButton jCancelBtn;
@@ -809,5 +817,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
     private javax.swing.JLabel jTitleLbl1;
     private javax.swing.JLabel jTitleLbl2;
     private javax.swing.JLabel jTypeLbl;
+    private javax.swing.ButtonGroup prefButtonGroup;
+    private javax.swing.ButtonGroup typeButtonGroup;
     // End of variables declaration//GEN-END:variables
 }
