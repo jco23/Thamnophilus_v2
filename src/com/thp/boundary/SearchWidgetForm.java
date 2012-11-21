@@ -339,7 +339,7 @@ public class SearchWidgetForm extends javax.swing.JFrame {
         this.jMatchCost.setText(Double.toString(widget.getUnitCostPrice()));
         this.jMatchPrice.setText(Double.toString(widget.getUnitSellPrice()));
         this.jMatchQuantity.setText(Integer.toString(widget.getQuantity()));
-        if(widget.getDescription()=="")
+        if(widget.getName()=="")
             this.jDesiredWidget.setText("No Match!");
         else
             this.jFrame1.setVisible(true);
