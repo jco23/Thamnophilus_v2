@@ -141,7 +141,7 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jLabel10.setText("Only numbers are allowed.");
 
         jLabel11.setForeground(new java.awt.Color(255, 153, 153));
-        jLabel11.setText("Description is required.");
+        jLabel11.setText("Description is too long");
 
         jLabel12.setForeground(new java.awt.Color(255, 153, 153));
         jLabel12.setText("Name is required.");
@@ -266,13 +266,17 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         this.jLabel7.setVisible(false);
         this.jLabel9.setVisible(false);
         this.jLabel10.setVisible(false);
-        if(this.jCreateName.getText().isEmpty() || this.jCreateName.getText().length() > 30 ||
-                this.jCreateDesc.getText().isEmpty() || this.jCreateDesc.getText(). length() > 30 ||
-                this.jCreateCost.getText().isEmpty() || this.jCreateCost.getText().length() > 6 ||
-                this.jCreatePrice.getText().isEmpty() || this.jCreatePrice.getText().length() > 7 ||
-                this.jCreateQuant.getText().isEmpty() || this.jCreateQuant.getText().length() > 3)
+        this.jLabel11.setVisible(false);
+        this.jLabel12.setVisible(false);
+        if(this.jCreateName.getText().isEmpty() || this.jCreateName.getText().length() > 30)
         {
-            this.jCreateName.requestFocus();
+            this.jLabel12.setVisible(true);
+            this.jStatus.setText("BOUNDARY ERROR");
+            errorstatus = true;
+        }
+        if(this.jCreateDesc.getText().length() > 60)
+        {
+            this.jLabel11.setVisible(true);
             this.jStatus.setText("BOUNDARY ERROR");
             errorstatus = true;
         }
@@ -344,6 +348,8 @@ public class CreateWidgetForm extends javax.swing.JFrame {
         jLabel7.setVisible(false);
         jLabel9.setVisible(false);
         jLabel10.setVisible(false);
+        this.jLabel11.setVisible(false);
+        this.jLabel12.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     /**

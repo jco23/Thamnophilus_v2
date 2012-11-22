@@ -62,6 +62,7 @@ public class WidgetControl {
     //Post-Condition: 
     public static Widget searchWidget(Widget w)
     {
+        Widget retw = new Widget();
         try
         {
             Statement stmt = AccountDB.conn.createStatement();
@@ -70,11 +71,11 @@ public class WidgetControl {
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next())
             {
-                w.setWidgetId(rs.getInt("ID"));
-                w.setWidget(rs.getString("WIDGETNAME"), rs.getString("DESCRIPTION"), rs.getDouble("CUNITPRICE"),
+                retw.setWidgetId(rs.getInt("ID"));
+                retw.setWidget(rs.getString("WIDGETNAME"), rs.getString("DESCRIPTION"), rs.getDouble("CUNITPRICE"),
                         rs.getDouble("SUNITPRICE"), rs.getInt("QTY"));
             }
         }catch(SQLException ex){Logger.getLogger(CreateWidgetForm.class.getName()).log(Level.SEVERE, null, ex);};
-        return w;
+        return retw;
     }    
 }
