@@ -5,8 +5,14 @@
 package com.thp.boundary;
 
 import com.thp.control.InvoiceControl;
+import com.thp.object.AccountDB;
 import com.thp.object.Invoice;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Mark Ma
@@ -36,6 +42,11 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         canvas1 = new java.awt.Canvas();
+        jFrame1 = new javax.swing.JFrame();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jListModel = new javax.swing.DefaultListModel();
+        jList1 = new javax.swing.JList(jListModel);
+        jLabel13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -94,6 +105,43 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jScrollPane3.setViewportView(jTextPane1);
+
+        jFrame1.setMinimumSize(new java.awt.Dimension(400, 300));
+
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jList1MouseReleased(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jList1);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel13.setText("List of Existing Widgets");
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel13)
+                        .addGap(0, 99, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 700));
@@ -305,7 +353,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(70, 70, 70))
+                .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -362,7 +410,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 30, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +418,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                                 .addComponent(jLabel17)
                                 .addGap(72, 72, 72)
                                 .addComponent(jButton3)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 423, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,8 +587,49 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        new WidgetList().setVisible(true);
+        jFrame1.setVisible(true);
+        try {
+                jListModel.removeAllElements();
+                 int i = 1;
+                 Statement stmt = AccountDB.conn.createStatement();
+                 String sql = "SELECT ID, WIDGETNAME, QTY, CUNITPRICE FROM APP.WIDGETS";
+                 ResultSet rs = stmt.executeQuery(sql);
+                 jListModel .add(0, "  <ID>     <Widget>     <Qty>     <Price>");
+                 while(rs.next()){
+                      String id = rs.getString("ID");      
+                      String wname = rs.getString("WIDGETNAME");
+                      String qty = rs.getString("QTY");
+                      String uprice = rs.getString("CUNITPRICE");
+                      jListModel.add(i, "      " + id + "      " + wname + "      " + qty + "      " + uprice + "      ");
+                      i++;
+                 }    
+        } 
+        catch (SQLException ex) {
+               Logger.getLogger(WidgetList.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3MouseClicked
+    
+    public String [] strSplit(String str)
+    {
+        String strs[] = str.split("     ");
+        return strs;
+    }
+    private void jList1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseReleased
+        // TODO add your handling code here:
+        String item = (String)jListModel.getElementAt(jList1.getSelectedIndex());
+        String [] items = strSplit(item);
+        selectedWidgetId = items[1];
+        selectedWidgetNm = items[2];
+        selectedWidgetQty = items[3];
+        selectedWidgetPrice = items[4];
+        System.out.println(this.jTable2.getRowCount());
+        //System.out.println(this.jTable2.g);
+        jTable2.setValueAt(selectedWidgetId, i, 0);
+        jTable2.setValueAt(selectedWidgetNm, i, 1);
+        jTable2.setValueAt(selectedWidgetQty, i, 2);
+        jTable2.setValueAt(selectedWidgetPrice, i, 3);
+        i++;
+    }//GEN-LAST:event_jList1MouseReleased
 
     /**
      * @param args the command line arguments
@@ -585,6 +674,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JTextField jCustID;
     private javax.swing.JTextField jDiscount;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JTextField jInvoiceID;
     private javax.swing.JTextField jIssueDate;
     private javax.swing.JLabel jIssueDateLbl;
@@ -592,6 +682,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -604,6 +695,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList jList1;
     private javax.swing.JTextField jName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jPaymentDueDate;
@@ -613,6 +705,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jSubtotal;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
@@ -624,4 +717,10 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField jTotalPrice;
     // End of variables declaration//GEN-END:variables
+    private int i = 0;
+    private static String selectedWidgetId;
+    private static String selectedWidgetNm;
+    private static String selectedWidgetQty; 
+    private static String selectedWidgetPrice;
+    private static javax.swing.DefaultListModel jListModel;
 }

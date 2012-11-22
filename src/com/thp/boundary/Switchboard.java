@@ -2,6 +2,7 @@ package com.thp.boundary;
 
 import com.thp.control.ReportControl;
 import com.thp.object.AccountDB;
+import com.thp.object.Widget;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
  *
  * @author user
  */
+
 public class Switchboard extends javax.swing.JFrame {
 
     /**
@@ -453,7 +455,7 @@ public class Switchboard extends javax.swing.JFrame {
                     .addComponent(jReports_Label3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jAllMonthWidgetBtn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jIndivMonthWidgetBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());

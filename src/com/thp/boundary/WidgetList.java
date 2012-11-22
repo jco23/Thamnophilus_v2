@@ -4,6 +4,14 @@
  */
 package com.thp.boundary;
 
+import com.thp.object.AccountDB;
+import com.thp.object.Global;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Mark Ma
@@ -13,8 +21,27 @@ public class WidgetList extends javax.swing.JFrame {
     /**
      * Creates new form WidgetList
      */
+    
     public WidgetList() {
         initComponents();
+        try {
+                        int i = 1;
+                        Statement stmt = AccountDB.conn.createStatement();
+                        String sql = "SELECT ID, WIDGETNAME, QTY, CUNITPRICE FROM APP.WIDGETS";
+                        ResultSet rs = stmt.executeQuery(sql);
+                        jListModel .add(0, "  <ID>     <Widget>     <Qty>     <Price>");
+                        while(rs.next()){
+                            String id = rs.getString("ID");
+                            String wname = rs.getString("WIDGETNAME");
+                            String qty = rs.getString("QTY");
+                            String uprice = rs.getString("CUNITPRICE"); 
+                            jListModel.add(i, "      " + id + "      " + wname + "      " + qty + "      " + uprice + "      ");
+                            i++;
+                        }
+                        
+                } catch (SQLException ex) {
+                    Logger.getLogger(WidgetList.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
 
     /**
@@ -28,42 +55,57 @@ public class WidgetList extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListModel = new javax.swing.DefaultListModel();
+        jList1 = new javax.swing.JList(jListModel);
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("List of Existing Widgets");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel1)
+                        .addGap(0, 99, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField1)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jLabel1)
-                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,6 +124,22 @@ public class WidgetList extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        // TODO add your handling code here:
+        String item = (String)jListModel.getElementAt(evt.getLastIndex());
+        String items[] = item.split("     ");
+        selectedWidget.selectedWidgetId = items[1];
+        selectedWidget.selectedWidgetNm = items[2];
+        selectedWidget.selectedWidgetQty = items[3];
+        selectedWidget.selectedWidgetPrice = items[4];
+        jTextField1.setText(items[0] + " " + items[1] + " " + items[2] + " " + items[3] + " " + items[4]);
+        this.setVisible(false);
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,5 +180,8 @@ public class WidgetList extends javax.swing.JFrame {
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    private static javax.swing.DefaultListModel jListModel;
+    public static Global selectedWidget;
 }
