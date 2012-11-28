@@ -81,7 +81,7 @@
                       </Group>
                       <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -113,8 +113,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -189,6 +189,9 @@
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="By Email"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jByEmailRdoFocusGained"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jByMailRdo">
               <Properties>
@@ -200,6 +203,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="By Mail"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jByMailRdoFocusGained"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -230,27 +236,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLocationLbl1" min="-2" pref="31" max="-2" attributes="1"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLocationLbl2" alignment="0" min="-2" pref="43" max="-2" attributes="1"/>
-                                  <Component id="jLocationLbl" alignment="0" min="-2" max="-2" attributes="1"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLocationLbl" max="32767" attributes="1"/>
+                          <Component id="jLocationLbl2" max="32767" attributes="1"/>
+                          <Component id="jLocationLbl1" max="32767" attributes="1"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jSoldCityTxt" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jSoldCityTxt" alignment="0" pref="272" max="32767" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jSoldStateCb" min="-2" pref="109" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLocationLbl3" min="-2" pref="63" max="-2" attributes="1"/>
+                              <Component id="jLocationLbl3" min="-2" max="-2" attributes="1"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jSoldZipCodeCb" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="jSoldZipCodeTxt" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jSoldAddressTxt" alignment="1" max="32767" attributes="1"/>
                       </Group>
@@ -275,8 +274,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLocationLbl2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLocationLbl3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSoldZipCodeCb" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jSoldStateCb" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSoldZipCodeTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -292,7 +291,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Address:"/>
+                <Property name="text" type="java.lang.String" value="* Address:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jSoldCityTxt">
@@ -303,7 +302,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="City:"/>
+                <Property name="text" type="java.lang.String" value="* City:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLocationLbl2">
@@ -312,7 +311,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="State:"/>
+                <Property name="text" type="java.lang.String" value="* State:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLocationLbl3">
@@ -321,20 +320,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Zip Code:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jSoldZipCodeCb">
-              <Properties>
-                <Property name="editable" type="boolean" value="true"/>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
+                <Property name="text" type="java.lang.String" value="* Zip Code:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jSoldStateCb">
@@ -342,6 +328,13 @@
                 <Property name="editable" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jSoldZipCodeTxt">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="#####-####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
@@ -379,13 +372,13 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jShipCityTxt" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jShipCityTxt" alignment="0" pref="272" max="32767" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jShipStateCb" min="-2" pref="109" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLocationLbl7" min="-2" pref="63" max="-2" attributes="1"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jShipZipCodeCb" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="jShipZipCodeTxt" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jShipAddressTxt" alignment="1" max="32767" attributes="1"/>
                       </Group>
@@ -410,8 +403,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLocationLbl6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLocationLbl7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jShipZipCodeCb" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jShipStateCb" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jShipZipCodeTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -459,24 +452,18 @@
                 <Property name="text" type="java.lang.String" value="Zip Code:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jShipZipCodeCb">
-              <Properties>
-                <Property name="editable" type="boolean" value="true"/>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JComboBox" name="jShipStateCb">
               <Properties>
                 <Property name="editable" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jShipZipCodeTxt">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="#####-####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
@@ -505,7 +492,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPriceLbl" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="jTitleLbl" alignment="0" pref="71" max="32767" attributes="1"/>
+                                  <Component id="jTitleLbl" alignment="0" max="32767" attributes="1"/>
                                   <Component id="jNameLbl" alignment="0" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -553,7 +540,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="First Name:"/>
+                <Property name="text" type="java.lang.String" value="* First Name:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jPriceLbl">
@@ -562,7 +549,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Last Name:"/>
+                <Property name="text" type="java.lang.String" value="* Last Name:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jLastNameTxt">
@@ -578,7 +565,7 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Company:"/>
+                <Property name="text" type="java.lang.String" value="* Company:"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jCustTypeRdo">
