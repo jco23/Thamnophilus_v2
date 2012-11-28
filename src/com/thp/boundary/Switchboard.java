@@ -560,14 +560,7 @@ public class Switchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jIndivCustSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIndivCustSalesBtnMouseClicked
-        try {
-            // TODO add your handling code here:
-            ReportControl.createExcelWorkbook();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_jIndivCustSalesBtnMouseClicked
 
     private void jIndivMonthSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIndivMonthSalesBtnMouseClicked
@@ -584,18 +577,46 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jAllCustSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllCustSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.customerSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllCustSalesBtnMouseClicked
 
     private void jAllMonthSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllMonthSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.salespersonSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllMonthSalesBtnMouseClicked
 
     private void jAllQuaterSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllQuaterSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.openInvoiceReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllQuaterSalesBtnMouseClicked
 
     private void jAllMonthWidgetBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllMonthWidgetBtnMouseClicked
         // TODO add your handling code here:
+         try {
+            ReportControl.widgetSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllMonthWidgetBtnMouseClicked
 
     private void jRecordP_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRecordP_btnMouseClicked
