@@ -661,6 +661,7 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jEditS_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditS_btnMouseClicked
         // TODO add your handling code here:
+        new EditSalespersonForm().setVisible(true);
     }//GEN-LAST:event_jEditS_btnMouseClicked
 
     private void jCreateS_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateS_btnMouseClicked
