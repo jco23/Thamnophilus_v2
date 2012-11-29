@@ -27,6 +27,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
      */
     public CreateCustomerForm() {
         initComponents();
+        this.jFirstNameTxt.requestFocus();
         
     }
 
@@ -53,8 +54,8 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jLocationLbl1 = new javax.swing.JLabel();
         jLocationLbl2 = new javax.swing.JLabel();
         jLocationLbl3 = new javax.swing.JLabel();
-        jSoldZipCodeCb = new javax.swing.JComboBox();
         jSoldStateCb = new javax.swing.JComboBox();
+        jSoldZipCodeTxt = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jShipAddressTxt = new javax.swing.JTextField();
         jLocationLbl4 = new javax.swing.JLabel();
@@ -62,8 +63,8 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jLocationLbl5 = new javax.swing.JLabel();
         jLocationLbl6 = new javax.swing.JLabel();
         jLocationLbl7 = new javax.swing.JLabel();
-        jShipZipCodeCb = new javax.swing.JComboBox();
         jShipStateCb = new javax.swing.JComboBox();
+        jShipZipCodeTxt = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
         jFirstNameTxt = new javax.swing.JTextField();
         jTitleLbl = new javax.swing.JLabel();
@@ -113,10 +114,20 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jByEmailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jByEmailRdo.setSelected(true);
         jByEmailRdo.setText("By Email");
+        jByEmailRdo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jByEmailRdoFocusGained(evt);
+            }
+        });
 
         prefButtonGroup.add(jByMailRdo);
         jByMailRdo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jByMailRdo.setText("By Mail");
+        jByMailRdo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jByMailRdoFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPreferenceRdoLayout = new javax.swing.GroupLayout(jPreferenceRdo);
         jPreferenceRdo.setLayout(jPreferenceRdoLayout);
@@ -146,24 +157,27 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jLocationLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLocationLbl.setText("Address:");
+        jLocationLbl.setText("* Address:");
 
         jLocationLbl1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLocationLbl1.setText("City:");
+        jLocationLbl1.setText("* City:");
 
         jLocationLbl2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLocationLbl2.setText("State:");
+        jLocationLbl2.setText("* State:");
 
         jLocationLbl3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLocationLbl3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLocationLbl3.setText("Zip Code:");
-
-        jSoldZipCodeCb.setEditable(true);
-        jSoldZipCodeCb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLocationLbl3.setText("* Zip Code:");
 
         jSoldStateCb.setEditable(true);
+
+        try {
+            jSoldZipCodeTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -171,23 +185,19 @@ public class CreateCustomerForm extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLocationLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLocationLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLocationLbl))
-                        .addGap(2, 2, 2)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLocationLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLocationLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLocationLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSoldCityTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSoldCityTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jSoldStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLocationLbl3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLocationLbl3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSoldZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSoldZipCodeTxt))
                     .addComponent(jSoldAddressTxt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -206,8 +216,8 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLocationLbl2)
                     .addComponent(jLocationLbl3)
-                    .addComponent(jSoldZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSoldStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSoldStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSoldZipCodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -229,10 +239,13 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         jLocationLbl7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLocationLbl7.setText("Zip Code:");
 
-        jShipZipCodeCb.setEditable(true);
-        jShipZipCodeCb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jShipStateCb.setEditable(true);
+
+        try {
+            jShipZipCodeTxt.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -250,13 +263,13 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                             .addComponent(jLocationLbl4))
                         .addGap(2, 2, 2)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jShipCityTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jShipCityTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jShipStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLocationLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jShipZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jShipZipCodeTxt))
                     .addComponent(jShipAddressTxt))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -275,8 +288,8 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLocationLbl6)
                     .addComponent(jLocationLbl7)
-                    .addComponent(jShipZipCodeCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jShipStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jShipStateCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jShipZipCodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -284,17 +297,17 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
         jTitleLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTitleLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jTitleLbl.setText("First Name:");
+        jTitleLbl.setText("* First Name:");
 
         jPriceLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPriceLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jPriceLbl.setText("Last Name:");
+        jPriceLbl.setText("* Last Name:");
 
         jCompanyTxt.setEnabled(false);
 
         jNameLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jNameLbl.setText("Company:");
+        jNameLbl.setText("* Company:");
 
         jCustTypeRdo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -356,7 +369,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPriceLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTitleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                            .addComponent(jTitleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -562,7 +575,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,6 +679,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
     private void jCustRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCustRdoFocusGained
         // TODO add your handling code here:
+        this.jCustRdo.setSelected(true);
         this.jFirstNameTxt.setEnabled(true);
         this.jLastNameTxt.setEnabled(true);
         this.jCompanyTxt.setText("");
@@ -678,6 +692,7 @@ public class CreateCustomerForm extends javax.swing.JFrame {
 
     private void jCompanyRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jCompanyRdoFocusGained
         // TODO add your handling code here:
+        this.jCompanyRdo.setSelected(true);
         this.jFirstNameTxt.setText("");
         this.jFirstNameTxt.setEnabled(false);
         this.jLastNameTxt.setText("");
@@ -689,33 +704,53 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         //pass each data item into the database
         Customer cust;
+        String shipToAddr;
+        String shipToCity;
+        String shipToState;
+        String shipToZipCode;
+        System.out.println(this.jSoldStateCb.getSelectedItem().toString());
         try {
+
             cust = new Customer();
+
+            if(this.jShipAddressTxt.getText().isEmpty() || this.jShipAddressTxt.getText().equals("")){
+                shipToAddr=this.jSoldAddressTxt.getText().toUpperCase();
+                shipToCity=this.jSoldCityTxt.getText().toUpperCase();
+                shipToState=this.jSoldStateCb.getSelectedItem().toString().toUpperCase();
+                shipToZipCode=this.jSoldZipCodeTxt.getText().toUpperCase();
+            }
+            else{
+                shipToAddr=this.jShipAddressTxt.getText().toUpperCase();
+                shipToCity=this.jShipCityTxt.getText().toUpperCase();
+                shipToState=this.jShipStateCb.getSelectedItem().toString().toUpperCase();
+                shipToZipCode=this.jShipZipCodeTxt.getText().toUpperCase();
+            }
+
             cust.setCustomer(
                 this.jCustRdo.isSelected(),
-                this.jFirstNameTxt.getText(),
-                this.jLastNameTxt.getText(),
-                this.jCompanyTxt.getText(),
+                this.jFirstNameTxt.getText().toUpperCase(),
+                this.jLastNameTxt.getText().toUpperCase(),
+                this.jCompanyTxt.getText().toUpperCase(),
                 this.jPhoneTxt.getText(),
                 this.jFaxTxt.getText(),
-                this.jEmailTxt.getText(),
-                this.jContactTxt.getText(),
-                this.jSoldAddressTxt.getText(),
-                this.jSoldCityTxt.getText(),
-                this.jSoldStateCb.getSelectedItem().toString(),
-                this.jSoldZipCodeCb.getSelectedItem().toString(),
-                
-                    this.jShipAddressTxt.getText(),
-                    this.jShipCityTxt.getText(),
-                    this.jShipStateCb.getSelectedItem().toString(),
-                    this.jShipZipCodeCb.getSelectedItem().toString(),
-                
+                this.jEmailTxt.getText().toLowerCase(),
+                this.jContactTxt.getText().toUpperCase(),
+                this.jSoldAddressTxt.getText().toUpperCase(),
+                this.jSoldCityTxt.getText().toUpperCase(),
+                this.jSoldStateCb.getSelectedItem().toString().toUpperCase(),
+                this.jSoldZipCodeTxt.getText().toUpperCase(),
+                shipToAddr,
+                shipToCity,
+                shipToState,
+                shipToZipCode,   
                 this.jByEmailRdo.isSelected(),
-                this.jSalespersonCb.getSelectedItem().toString(),
-                this.jTermsCodeCb.getSelectedItem().toString(),
+                this.jSalespersonCb.getSelectedItem().toString().toUpperCase(),
+                this.jTermsCodeCb.getSelectedItem().toString().toUpperCase(),
                 Integer.parseInt(this.jDiscountRateTxt.getText()),
                 Double.parseDouble(this.jTaxRateTxt.getText()));
+
             CustomerControl.createCustomer(cust);
+
         } catch (SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -725,6 +760,16 @@ public class CreateCustomerForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
     }//GEN-LAST:event_jCancelBtnMouseClicked
+
+    private void jByEmailRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jByEmailRdoFocusGained
+        // TODO add your handling code here:
+        this.jByEmailRdo.setSelected(true);
+    }//GEN-LAST:event_jByEmailRdoFocusGained
+
+    private void jByMailRdoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jByMailRdoFocusGained
+        // TODO add your handling code here:
+        this.jByMailRdo.setSelected(true);
+    }//GEN-LAST:event_jByMailRdoFocusGained
 
     /**
      * @param args the command line arguments
@@ -806,11 +851,11 @@ public class CreateCustomerForm extends javax.swing.JFrame {
     private javax.swing.JTextField jShipAddressTxt;
     private javax.swing.JTextField jShipCityTxt;
     private javax.swing.JComboBox jShipStateCb;
-    private javax.swing.JComboBox jShipZipCodeCb;
+    private javax.swing.JFormattedTextField jShipZipCodeTxt;
     private javax.swing.JTextField jSoldAddressTxt;
     private javax.swing.JTextField jSoldCityTxt;
     private javax.swing.JComboBox jSoldStateCb;
-    private javax.swing.JComboBox jSoldZipCodeCb;
+    private javax.swing.JFormattedTextField jSoldZipCodeTxt;
     private javax.swing.JTextField jTaxRateTxt;
     private javax.swing.JComboBox jTermsCodeCb;
     private javax.swing.JLabel jTitleLbl;

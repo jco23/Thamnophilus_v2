@@ -273,7 +273,7 @@ public class Switchboard extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jSalesperson_Label.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jSalesperson_Label.setText("Salespersons");
+        jSalesperson_Label.setText("Salespeople");
 
         jCreateS_btn.setText("Create");
         jCreateS_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -301,15 +301,16 @@ public class Switchboard extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSearchS_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCreateS_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jEditS_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSalesperson_Label))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSalesperson_Label)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -353,16 +354,16 @@ public class Switchboard extends javax.swing.JFrame {
         });
 
         jReports_Label1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jReports_Label1.setText("Customer Sales Report");
+        jReports_Label1.setText("Open Invoices Report");
 
         jReports_Label2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jReports_Label2.setText("Monthly Salesperson Sales Report");
+        jReports_Label2.setText("Customer Sales Report");
 
         jReports_Label3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jReports_Label3.setText("Monthly Widget Sales Reports");
+        jReports_Label3.setText("Widget Sales Reports");
 
         jReports_Label4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jReports_Label4.setText("Quarterly Salesperson Sales Report");
+        jReports_Label4.setText("Salesperson Commission Report");
 
         jIndivCustSalesBtn.setText("Individual");
         jIndivCustSalesBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,7 +532,7 @@ public class Switchboard extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,14 +561,7 @@ public class Switchboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jIndivCustSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIndivCustSalesBtnMouseClicked
-        try {
-            // TODO add your handling code here:
-            ReportControl.createExcelWorkbook();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_jIndivCustSalesBtnMouseClicked
 
     private void jIndivMonthSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIndivMonthSalesBtnMouseClicked
@@ -584,18 +578,46 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jAllCustSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllCustSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.customerSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllCustSalesBtnMouseClicked
 
     private void jAllMonthSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllMonthSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.salespersonSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllMonthSalesBtnMouseClicked
 
     private void jAllQuaterSalesBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllQuaterSalesBtnMouseClicked
         // TODO add your handling code here:
+        try {
+            ReportControl.openInvoiceReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllQuaterSalesBtnMouseClicked
 
     private void jAllMonthWidgetBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jAllMonthWidgetBtnMouseClicked
         // TODO add your handling code here:
+         try {
+            ReportControl.widgetSalesReport();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Switchboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jAllMonthWidgetBtnMouseClicked
 
     private void jRecordP_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRecordP_btnMouseClicked
@@ -640,6 +662,7 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jEditS_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditS_btnMouseClicked
         // TODO add your handling code here:
+        new EditSalespersonForm().setVisible(true);
     }//GEN-LAST:event_jEditS_btnMouseClicked
 
     private void jCreateS_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateS_btnMouseClicked

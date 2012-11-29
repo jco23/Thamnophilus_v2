@@ -21,83 +21,58 @@ public class Customer extends Person {
     String soldToAddress;
     String soldToCity;
     String soldToState;
-    int soldToZipCode;
+    String soldToZipCode;
     String shipToAddress;
     String shipToCity;
     String shipToState;
-    int shipToZipCode;
+    String shipToZipCode;
     String phone;
     String fax;
     String email;
     String contact;
-    boolean preference;
+    int preference;
     int discount;
     String termsCode;
     double taxRate;
     int salespersonId;
     
     public Customer() throws SQLException{
-        setCustomer(true,"","","","","","","","","","","","","","","",true,"","",0,0);
+                    //type, fn,     ln,     cp, 
+        setCustomer(true,   "",     "",     "", 
+                    //tel,  fax,    em,     ct,
+                    "",     "",     "",     "",
+                    //sold, sold,   sold,   sold
+                    "",     "",     "",     "",
+                    //ship, ship,   ship,   ship
+                    "",     "",     "",     "",
+                    //pref, spId,   tc,     drate,  trate
+                    true,   "",     "",     0,      0);
     }
 
-    public Customer(boolean cType,
-                    String fn, 
-                    String ln, 
-                    String cp, 
-                    String tel, 
-                    String fax, 
-                    String em, 
-                    String ct, 
-                    String soldAddr, 
-                    String soldCity, 
-                    String soldState, 
-                    String soldZip, 
-                    String shipAddr, 
-                    String shipCity, 
-                    String shipState, 
-                    String shipZip, 
-                    boolean pref, 
-                    String sp,
-                    String terms, 
-                    int dRate, 
-                    double tRate) throws SQLException {
-        setCustomer(cType,fn,ln,cp,tel,fax,em,ct,soldAddr,soldCity,soldState,soldZip,shipAddr,shipCity, shipState,shipZip,pref,sp,terms,dRate,tRate);
+    public Customer(boolean cType,      String fn,          String ln,          String cp, 
+                    String tel,         String fax,         String em,          String ct, 
+                    String soldAddr,    String soldCity,    String soldState,   String soldZip, 
+                    String shipAddr,    String shipCity,    String shipState,   String shipZip, 
+                    boolean pref,       String sp,          String terms,       int dRate,      double tRate) 
+                    throws SQLException {
+        setCustomer(cType,fn,ln,cp,
+                    tel,fax,em,ct,
+                    soldAddr,soldCity,soldState,soldZip,
+                    shipAddr,shipCity, shipState,shipZip,
+                    pref,sp,terms,dRate,tRate);
     }
  //Set functions
-    public void setCustomer(boolean cType,
-                            String fn,
-                            String ln,
-                            String cp,
-                            String tel,
-                            String fx,
-                            String em,
-                            String ct,
-                            String soldAddr,
-                            String soldCity,
-                            String soldState,
-                            String soldZip,
-                            String shipAddr,
-                            String shipCity,
-                            String shipState,
-                            String shipZip,
-                            boolean pref,
-                            String sp,
-                            String terms,
-                            int dRate,
-                            double tRate) throws SQLException{
-        setCustType(cType);
-        setPerson(fn, ln);
-        setPhone(tel);
-        setFax(fx);
-        setEmail(em);
-        setContact(ct);
-        setSoldToAddress(soldAddr,soldCity,soldState,soldZip);
-        setShipToAddress(shipAddr, shipCity, shipState, shipZip);
-        setPreference(pref);
-        setSalesPerson(sp);
-        setTermsCode(terms);
-        setDiscountRate(dRate);
-        setTaxRate(tRate);
+    public void setCustomer(boolean cType,      String fn,          String ln,          String cp,
+                            String tel,         String fx,          String em,          String ct,
+                            String soldAddr,    String soldCity,    String soldState,   String soldZip,
+                            String shipAddr,    String shipCity,    String shipState,   String shipZip,
+                            boolean pref,       String sp,          String terms,       int dRate,      double tRate) 
+                            throws SQLException{
+        setCustType(cType);         setPerson(fn,       ln);                    setCompany(cp);
+        setPhone(tel);              setFax(fx);         setEmail(em);           setContact(ct);
+        setSoldToAddress(soldAddr,  soldCity,           soldState,              soldZip);
+        setShipToAddress(shipAddr,  shipCity,           shipState,              shipZip);
+        setPreference(pref);        setSalesPerson(sp); setTermsCode(terms);    setDiscountRate(dRate); setTaxRate(tRate);
         
     }
     public void setCustType(boolean ctype){
@@ -108,6 +83,9 @@ public class Customer extends Person {
     }
     public void setCustomerName(String fn, String ln){
         setPerson(fn, ln);
+    }
+    public void setCompany(String cp){
+        company=cp;
     }
     public void setPhone(String tel){
         phone=tel;
@@ -126,19 +104,26 @@ public class Customer extends Person {
         soldToAddress=soldAddr;
         soldToCity=soldCity;
         soldToState=soldState;
-        soldToZipCode=Integer.parseInt(soldZip);
+        soldToZipCode=soldZip;
     
     }
     public void setShipToAddress(String shipAddr, String shipCity, String shipState, String shipZip){
         shipToAddress=shipAddr;
         shipToCity=shipCity;
         shipToState=shipState;
-        shipToZipCode=Integer.parseInt(shipZip);    
+        shipToZipCode=shipZip;   
     }
     public void setPreference(boolean pref){
-        preference=pref;
+        if(pref){
+            preference=1;
+        }
+        else
+        {
+            preference=2;
+        }
     }
     public void setSalesPerson(String sp) throws SQLException{
+       if(!sp.equals("")){
        String name[] = sp.split(" ");
        Statement stmt = AccountDB.conn.createStatement();
        String sql = "SELECT ID FROM APP.SALESPEOPLE WHERE FIRSTNAME='" + 
@@ -148,6 +133,10 @@ public class Customer extends Person {
             salespersonId = rs.getInt("ID");
        }
        rs.close();
+       }
+       else{
+           salespersonId = 0;
+       }
     }
     public void setTermsCode(String terms){
         termsCode=terms;
@@ -187,7 +176,7 @@ public class Customer extends Person {
     public String getSoldToState(){
         return soldToState;
     }
-    public int getSoldToZip(){
+    public String getSoldToZip(){
         return soldToZipCode;
     }
     public String getShipToAddress(){
@@ -199,10 +188,10 @@ public class Customer extends Person {
     public String getShipToState(){
         return shipToState;
     }
-    public int getShipToZip(){
+    public String getShipToZip(){
         return shipToZipCode;
     }
-    public boolean getPreference(){
+    public int getPreference(){
         return preference;
     }
     public int getSalesperson(){

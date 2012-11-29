@@ -1,29 +1,25 @@
-package com.thp.boundary;                                        
-                                       
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.thp.boundary;
 
 import com.thp.control.SalespersonControl;
 import com.thp.object.Salesperson;
 import java.awt.Color;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author user
  */
-
-public class SearchSalespersonForm extends javax.swing.JFrame {
+public class EditSalespersonForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form createCustomerForm
+     * Creates new form EditSalesperson
      */
-    public SearchSalespersonForm() {
+    public EditSalespersonForm() {
         initComponents();
         this.jNameMsg.setVisible(false);
-        
     }
 
     /**
@@ -43,7 +39,11 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jEditLastNameTxt = new javax.swing.JTextField();
         jNameLbl2 = new javax.swing.JLabel();
         jEditPhoneTxt = new javax.swing.JTextField();
+        jEditBtn = new javax.swing.JButton();
         jOkBtn = new javax.swing.JButton();
+        jTitleLbl3 = new javax.swing.JLabel();
+        jTitleLbl4 = new javax.swing.JLabel();
+        jTitleLbl5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jNameTxt = new javax.swing.JTextField();
@@ -52,9 +52,9 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jCancelBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jNameMsg = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jStatusMsg = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         jFrame1.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -64,23 +64,21 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Salesperson Information"));
 
-        jEditFirstNameTxt.setEditable(false);
-        jEditFirstNameTxt.setBackground(new java.awt.Color(255, 255, 255));
-
         jTitleLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jTitleLbl2.setText("First Name:");
 
         jPriceLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPriceLbl2.setText("Last Name:");
 
-        jEditLastNameTxt.setEditable(false);
-        jEditLastNameTxt.setBackground(new java.awt.Color(255, 255, 255));
-
         jNameLbl2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jNameLbl2.setText("Phone:");
 
-        jEditPhoneTxt.setEditable(false);
-        jEditPhoneTxt.setBackground(new java.awt.Color(255, 255, 255));
+        jEditBtn.setText("Save");
+        jEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jEditBtnMouseClicked(evt);
+            }
+        });
 
         jOkBtn.setText("OK");
         jOkBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,6 +86,15 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 jOkBtnMouseClicked(evt);
             }
         });
+
+        jTitleLbl3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jTitleLbl3.setText("First name is required.");
+
+        jTitleLbl4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jTitleLbl4.setText("Last name is required.");
+
+        jTitleLbl5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jTitleLbl5.setText("Phone number is required.");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -104,10 +111,16 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                     .addComponent(jEditLastNameTxt, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jEditFirstNameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jOkBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jOkBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jEditBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTitleLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTitleLbl4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTitleLbl5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,17 +128,22 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTitleLbl2)
-                    .addComponent(jEditFirstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jEditFirstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTitleLbl3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPriceLbl2)
-                    .addComponent(jEditLastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jEditLastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTitleLbl4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNameLbl2)
-                    .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jEditPhoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTitleLbl5))
                 .addGap(18, 18, 18)
-                .addComponent(jOkBtn)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jEditBtn)
+                    .addComponent(jOkBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -138,30 +156,24 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(191, 191, 191)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(51, 51, 51))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jNameTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -237,11 +249,11 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("EDIT SALESPERSON INFORMATION");
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Status:");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("SEARCH SALESPERSON INFORMATION");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,7 +266,7 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addComponent(jStatusMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 139, Short.MAX_VALUE)
+                .addGap(0, 147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -267,7 +279,7 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jStatusMsg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,14 +288,6 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-//       Division d = new Division(1,"LuLu");
-       //Connection conn = getConnection("jdbc:derby://localhost:1527/accountdb");
-       
-      // jTitleTxt.setText(d.getName());
-    }//GEN-LAST:event_formWindowOpened
 
     private void jNameTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNameTxtKeyTyped
         // TODO add your handling code here:
@@ -327,13 +331,19 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
             this.jStatusMsg.setText("Error. Enter the full name.");
             this.jNameTxt.requestFocus();
         }
-
+        
     }//GEN-LAST:event_jSearchBtnMouseClicked
 
     private void jCancelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCancelBtnMouseClicked
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jCancelBtnMouseClicked
+
+    private void jEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditBtnMouseClicked
+        // TODO add your handling code here:
+        Salesperson salesperson = new Salesperson(this.jEditFirstNameTxt.getText(), this.jEditLastNameTxt.getText(), this.jEditPhoneTxt.getText());
+        SalespersonControl.editSalesperson(salesperson);
+    }//GEN-LAST:event_jEditBtnMouseClicked
 
     private void jOkBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOkBtnMouseClicked
         // TODO add your handling code here:
@@ -363,25 +373,26 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditSalespersonForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SearchSalespersonForm().setVisible(true);
+                new EditSalespersonForm().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jCancelBtn;
+    private javax.swing.JButton jEditBtn;
     public javax.swing.JTextField jEditFirstNameTxt;
     private javax.swing.JTextField jEditLastNameTxt;
     private javax.swing.JTextField jEditPhoneTxt;
@@ -401,5 +412,8 @@ public class SearchSalespersonForm extends javax.swing.JFrame {
     private javax.swing.JTextField jStatusMsg;
     private javax.swing.JLabel jTitleLbl;
     private javax.swing.JLabel jTitleLbl2;
+    private javax.swing.JLabel jTitleLbl3;
+    private javax.swing.JLabel jTitleLbl4;
+    private javax.swing.JLabel jTitleLbl5;
     // End of variables declaration//GEN-END:variables
 }

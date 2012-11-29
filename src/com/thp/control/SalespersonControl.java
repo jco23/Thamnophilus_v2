@@ -46,8 +46,8 @@ public class SalespersonControl {
             String sql = "UPDATE APP.SALESPEOPLE " + 
                         "SET FIRSTNAME='" + sp.getFirstName() +
                         "', LASTNAME='" + sp.getLastName() +
-                        "', PHONE=" + sp.getPhone() + 
-                        " WHERE FIRSTNAME='" + sp.getFirstName() +
+                        "', PHONE='" + sp.getPhone() + 
+                        "' WHERE FIRSTNAME='" + sp.getFirstName() +
                         "' AND LASTNAME='" + sp.getLastName() + "'" ;
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {

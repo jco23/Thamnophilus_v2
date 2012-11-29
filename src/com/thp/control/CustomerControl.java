@@ -25,30 +25,32 @@ public class CustomerControl {
         try {
             Statement stmt = AccountDB.conn.createStatement();  
             String sql = "INSERT INTO APP.CUSTOMERS(custtype, " + 
-                    "firstname, lastname, company, phone, fax, email, contact, " +
+                    "firstname, lastname, company, phone, fax, email, contactInfo, " +
                     "soldtoaddress, soldtocity, soldtostate, soldtozipcode, " + 
                     "shiptoaddress, shiptocity, shiptostate, shiptozipcode, " + 
-                    "preference, salespersonid, termscode, discount, taxrate) VALUES('" + 
-                            cust.getCustType() + ", " + 
+                    "preference, salespersonid, termscode, discount, taxrate) VALUES(" + 
+                            cust.getCustType() + ", '" + 
                             cust.getFirstName() + "', '" + 
                             cust.getLastName() + "', '" + 
+                            cust.getCompany() + "', '" + 
                             cust.getPhone() + "', '" + 
                             cust.getFax() + "', '" +
                             cust.getEmail() + "', '" + 
                             cust.getContact() + "', '" + 
                             cust.getSoldToAddress() + "', '" + 
                             cust.getSoldToCity() + "', '" + 
-                            cust.getSoldToState() + "', " + 
-                            cust.getSoldToZip() + ", '" +
+                            cust.getSoldToState() + "', '" + 
+                            cust.getSoldToZip() + "', '" +
                             cust.getShipToAddress() + "', '" + 
                             cust.getShipToCity() + "', '" +
-                            cust.getShipToState() + "', " + 
-                            cust.getShipToZip() + ", " + 
+                            cust.getShipToState() + "', '" + 
+                            cust.getShipToZip() + "', " + 
                             cust.getPreference() + ", " + 
                             cust.getSalesperson() + ", '" + 
                             cust.getTermsCode() + "', " + 
                             cust.getDiscountRate() + ", " +
                             cust.getTaxRate() + ")";
+            System.out.println(sql);
             stmt.executeUpdate(sql);
             return "Customer successfully created.";
         } catch (SQLException ex) {
