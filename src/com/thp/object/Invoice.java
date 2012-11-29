@@ -17,7 +17,7 @@ public class Invoice {
     int salespersonId;
     int widgetId;
     int quantity;
-    Date issueDate;
+    Date invoiceDate;
     Date shipDate;
     String termsCode;
     Date paymentDueDate;
@@ -26,6 +26,7 @@ public class Invoice {
     double discount;
     double total;
     double balance;
+    double financeCharge;
     
     public Invoice(){
         setInvoice(0, 0, 0, 0,
@@ -48,7 +49,7 @@ public class Invoice {
         setSalespersonId(spId);
         setWidgetId(wId);
         setQuantity(qty);
-        setIssueDate(invDate);
+        setInvoiceDate(invDate);
         setShipDate(sDate);
         setTermsCode(tCode);
         setPaymentDueDate(pDate);
@@ -74,8 +75,8 @@ public class Invoice {
     public void setQuantity(int qty){
         quantity = qty;
     }
-    public void setIssueDate(Date invDate){
-        issueDate = invDate;
+    public void setInvoiceDate(Date invDate){
+        invoiceDate = invDate;
     }
     public void setShipDate(Date sDate){
         shipDate = sDate;
@@ -101,6 +102,10 @@ public class Invoice {
     public void setBalance(double bal){
         balance = bal;
     }
+    public void setFinanceCharge(double finCharge){
+        financeCharge = finCharge;
+    }
+    
     
     
     public int getInvoiceId(){
@@ -118,8 +123,8 @@ public class Invoice {
     public int getQuantity(){
         return quantity;
     }
-    public Date getIssueDate(){
-        return issueDate;
+    public Date getInvoiceDate(){
+        return invoiceDate;
     }
     public Date getShipDate(){
         return shipDate;
@@ -127,7 +132,7 @@ public class Invoice {
     public String getTermsCode(){
         return termsCode;
     }
-    public Date getPaymentDueDate(){
+    public Date getDueDate(){
         return paymentDueDate;
     }
     public double getSubtotal(){
@@ -145,5 +150,7 @@ public class Invoice {
     public double getBalance(){
         return balance;
     }
-    
+    public double getFinanceCharge(){
+        return financeCharge;
+    }
 }
