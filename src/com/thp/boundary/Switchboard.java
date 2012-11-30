@@ -632,7 +632,7 @@ public class Switchboard extends javax.swing.JFrame {
 
     private void jEditI_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditI_btMouseClicked
         // TODO add your handling code here:
-        new EditInvoiceForm().setVisible(true);
+        new DeleteInvoiceForm().setVisible(true);
     }//GEN-LAST:event_jEditI_btMouseClicked
 
     private void jCreateI_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateI_btnMouseClicked

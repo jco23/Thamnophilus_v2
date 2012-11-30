@@ -604,7 +604,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         Invoice invoice = new Invoice();
         ArrayList<WidgetInvoice> widInvList = new ArrayList<WidgetInvoice>();
-        invoice.setInvoiceId(Integer.parseInt(jInvoiceID.getText()));
+        invoice.setInvoiceId(0);
         invoice.setCustomerId(Integer.parseInt(jCustID.getText()));
         invoice.setSalespersonId(Integer.parseInt(jSalespersonID.getText()));
         invoice.setInvoiceDate(Date.valueOf(jIssueDate.getText()));
