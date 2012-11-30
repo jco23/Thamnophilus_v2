@@ -30,11 +30,10 @@ public class InvoiceControl {
     {
          try {
             Statement stmt = AccountDB.conn.createStatement();  
-            String sqlInv = "INSERT INTO APP.INVOICES(invoiceid, customerid, salespersonid,"
+            String sqlInv = "INSERT INTO APP.INVOICES(customerid, salespersonid,"
                                                    + "invoicedate, duedate, termscode,"
                                                    + " shipdate, subtotal, discount,"
                                                    + " tax, total, balance, financecharge) VALUES(" + 
-                            inv.getInvoiceId() + ", " + 
                             inv.getCustomerId() + ", " + 
                             inv.getSalespersonId() + ", '" +
                             inv.getInvoiceDate() + "', '" +
@@ -47,11 +46,12 @@ public class InvoiceControl {
                             inv.getTotal() + ", " +
                             inv.getBalance() + ", " +
                             inv.getFinanceCharge() + ")";
-            for(int i = 0; i < widInvList.size(); i++){
-                String sqlWid = getSqlWid(widInvList, i);
-                stmt.execute(sqlWid);
-            }
-//            stmt.executeUpdate(sqlInv);
+            //for(int i = 0; i < widInvList.size(); i++){
+           //     String sqlWid = getSqlWid(widInvList, i);
+          //      stmt.execute(sqlWid);
+          //  }
+            System.out.println(sqlInv);
+            stmt.executeUpdate(sqlInv);
             return "Invoice successfully created.";
         } catch (SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);

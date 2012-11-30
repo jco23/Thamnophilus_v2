@@ -612,18 +612,20 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         invoice.setTermsCode(jTermsCode.getText());
         invoice.setShipDate(Date.valueOf(jShipDate.getText()));
         invoice.setSubtotal(Double.parseDouble(jSubtotal2.getText()));
-        invoice.setDiscount(Double.parseDouble(jDiscount.getSelectedItem().toString()));
-        invoice.setTax(Double.parseDouble(jTax.getText()));
+        invoice.setDiscount(Double.parseDouble(jDiscount.getSelectedItem().toString().substring(0, 2)));
+        invoice.setTax(Double.parseDouble(jTax.getText().substring(0, 4)));
         invoice.setTotal(Double.parseDouble(jTotalPrice.getText()));
         invoice.setBalance(Double.parseDouble(jBalance.getText()));
         invoice.setFinanceCharge(Double.parseDouble(jFinanceCharge.getText()));
-        for(int i = 0; i< jTable2.getRowCount(); i++){
+        System.out.println(i);
+        for(int j = 0; j< i; j++){
             WidgetInvoice widInv = new WidgetInvoice();
-            widInv.setWidgetId(Integer.parseInt(jTable2.getValueAt(i, 0).toString()));
+            widInv.setWidgetId(Integer.parseInt(jTable2.getValueAt(j, 0).toString().substring(1)));
             widInv.setInvoiceId(invoice.getInvoiceId());
-            widInv.setQuantity(Integer.parseInt(jTable2.getValueAt(i, 2).toString()));
+            widInv.setQuantity(Integer.parseInt(jTable2.getValueAt(j, 2).toString().substring(1)));
             widInvList.add(widInv);
         }
+        System.out.println("here");
         String msg = InvoiceControl.createInvoice(invoice, widInvList);
         
     }//GEN-LAST:event_jButton1MouseClicked
