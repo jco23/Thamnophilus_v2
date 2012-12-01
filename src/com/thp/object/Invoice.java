@@ -73,7 +73,7 @@ public class Invoice {
             return "";
         }
         else{
-            String err = "ID: " + invId + "already exists!";
+            String err = "ID: " + invId + " already exists!";
             return err;
         }
     }
@@ -83,7 +83,7 @@ public class Invoice {
             return "";
         }
         else{
-            String err = "ID: " + custId + "does not exists!";
+            String err = "ID: " + custId + " does not exists!";
             return err;
         }
     }
@@ -93,7 +93,7 @@ public class Invoice {
             return "";
         }
         else{
-            String err = "ID: " + spId + "does not exists!";
+            String err = "ID: " + spId + " does not exists!";
             return err;
         }
     }

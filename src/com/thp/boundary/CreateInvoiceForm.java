@@ -589,79 +589,80 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         Invoice invoice = new Invoice();
         ArrayList<WidgetInvoice> widInvList = new ArrayList<WidgetInvoice>();
-        //
+        //test and set all ID's
         if(jInvoiceID.getText().isEmpty())
         {
             jInvoiceID.setText("This field is required!");
             jInvoiceID.setBackground(Color.pink);
-        }
+        }else if(entryIsValid(jInvoiceID) == true){
+           invIdRes = invoice.setInvoiceId(Integer.parseInt(jInvoiceID.getText()));
+           setTextField(invIdRes, jInvoiceID);
+        }//Invoice ID
+        
         if(jSalespersonID.getText().isEmpty())
         {
             jInvoiceID.setText("This field is required!");
             jInvoiceID.setBackground(Color.pink);
-        }
+        }else if(entryIsValid(jSalespersonID) == true){
+           spIdRes = invoice.setSalespersonId(Integer.parseInt(jSalespersonID.getText()));
+           setTextField(spIdRes, jSalespersonID);
+        }//Salesperson ID
+        
         if(jCustID.getText().isEmpty())
         {
             jInvoiceID.setText("This field is required!");
             jInvoiceID.setBackground(Color.pink);
-        }
-        //
-        if(entryIsValid(jInvoiceID) == true){
-           invIdRes = invoice.setInvoiceId(Integer.parseInt(jInvoiceID.getText()));
-           setTextField(invIdRes, jInvoiceID);
-        }
-        if(entryIsValid(jCustID) == true){
+        }else if(entryIsValid(jCustID) == true){
            custIdRes = invoice.setCustomerId(Integer.parseInt(jCustID.getText()));
            setTextField(custIdRes, jCustID);
-        }
-        if(entryIsValid(jSalespersonID) == true){
-           spIdRes = invoice.setSalespersonId(Integer.parseInt(jSalespersonID.getText()));
-           setTextField(spIdRes, jSalespersonID);
-        }
+        }//Customer ID
+        
         //test ans set all dates
         if(jIssueDate.getText().isEmpty()){
             invoice.setInvoiceDate(Date.valueOf("9999-12-12"));
-        }
-        else if(isValidDate(jIssueDate) == true){
+        }else if(isValidDate(jIssueDate) == true){
             invoice.setInvoiceDate(Date.valueOf(jIssueDate.getText()));
         }//Invoice Date
+        
         if(jPaymentDueDate.getText().isEmpty()){
             invoice.setPaymentDueDate(Date.valueOf("9999-12-12"));
-        }
-        else if(isValidDate(jPaymentDueDate) == true){
+        }else if(isValidDate(jPaymentDueDate) == true){
             invoice.setInvoiceDate(Date.valueOf(jPaymentDueDate.getText()));
         }//Payment Date
+        
         if(jShipDate.getText().isEmpty()){
             invoice.setShipDate(Date.valueOf("9999-12-12"));
-        }
-        else if(isValidDate(jShipDate) == true){
+        }else if(isValidDate(jShipDate) == true){
             invoice.setShipDate(Date.valueOf(jShipDate.getText()));
         }//Ship Date
         
         //Test and set all test fields
         if(jTermsCode.getText().isEmpty()){
             invoice.setTermsCode(" ");
-        }
-        else{
+        }else{
             invoice.setTermsCode(jTermsCode.getText());
         }//Terms Code
+        
         if(jFinanceCharge.getText().isEmpty()){
             invoice.setFinanceCharge(0);
-        }
-        else if(doubleEntryIsValid(jFinanceCharge)==true){
+        }else if(doubleEntryIsValid(jFinanceCharge)==true){
             invoice.setFinanceCharge(Double.parseDouble(jFinanceCharge.getText()));
         }//Finance Charge
+        
         if(jTotalPrice.getText().isEmpty()){
             jTotalPrice.setBackground(Color.pink);
             jTotalPrice.setText("Calculate total please.");
-        }
-        else{
+        }else{
              invoice.setTotal(Double.parseDouble(jTotalPrice.getText()));
         }
+        
+        //the test need not to be tested
         invoice.setSubtotal(Double.parseDouble(jSubtotal2.getText()));
         invoice.setDiscount(Double.parseDouble(jDiscount.getSelectedItem().toString().substring(0, 2)));
         invoice.setTax(Double.parseDouble(jTax.getText().substring(0, 4)));
         invoice.setBalance(Double.parseDouble(jBalance.getText()));
+        
+        //
         for(int j = 0; j< i; j++){
             WidgetInvoice widInv = new WidgetInvoice();
             widInv.setWidgetId(Integer.parseInt(jTable2.getValueAt(j, 0).toString().substring(1)));
