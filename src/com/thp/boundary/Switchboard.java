@@ -456,7 +456,7 @@ public class Switchboard extends javax.swing.JFrame {
                     .addComponent(jReports_Label3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jAllMonthWidgetBtn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jIndivMonthWidgetBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -548,7 +548,7 @@ public class Switchboard extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 78, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
