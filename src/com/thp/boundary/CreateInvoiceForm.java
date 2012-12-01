@@ -88,6 +88,8 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jDiscount = new javax.swing.JComboBox();
         jStatusLbl = new javax.swing.JLabel();
         jStatus = new javax.swing.JLabel();
+        jLastInvId = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -393,7 +395,6 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jPaymentDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jShipDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -442,6 +443,11 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jStatus.setForeground(new java.awt.Color(0, 153, 0));
         jStatus.setText("  ");
+
+        jLastInvId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLastInvId.setForeground(new java.awt.Color(0, 51, 255));
+
+        jLabel7.setText("Invoice ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -498,10 +504,14 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(198, 198, 198))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jStatusLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(243, 243, 243)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jStatusLbl)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLastInvId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -545,10 +555,14 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                     .addComponent(jStatusLbl)
                     .addComponent(jStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLastInvId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -590,14 +604,6 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         Invoice invoice = new Invoice();
         ArrayList<WidgetInvoice> widInvList = new ArrayList<WidgetInvoice>();
         //test and set all ID's
-        if(jInvoiceID.getText().isEmpty())
-        {
-            jInvoiceID.setText("This field is required!");
-            jInvoiceID.setBackground(Color.pink);
-        }else if(entryIsValid(jInvoiceID) == true){
-           invIdRes = invoice.setInvoiceId(Integer.parseInt(jInvoiceID.getText()));
-           setTextField(invIdRes, jInvoiceID);
-        }//Invoice ID
         
         if(jSalespersonID.getText().isEmpty())
         {
@@ -673,9 +679,35 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         //Push invoice into Datebase
         String msg = InvoiceControl.createInvoice(invoice, widInvList);
         
-        if(msg.substring(0).equals("I"))
+        if(msg.substring(0,1).equals("I"))
         {
-            jStatus.setText(msg);
+            int lastInvId = 0;
+            try{
+                int i = 0;
+                int [] idList = new int[100];
+                Statement stmt = AccountDB.conn.createStatement();  
+                String sqlInvId = "select INVOICEID from APP.INVOICES";
+                ResultSet rs = stmt.executeQuery(sqlInvId);
+                while(rs.next())
+                {
+                    idList[i] = rs.getInt("INVOICEID");   
+                }
+                for(int j = 0; j<idList.length; j++)
+                {
+                    if(idList[j] == 0)
+                    {
+                        lastInvId = idList[j-1];
+                        break;
+                    }
+                }
+                jLastInvId.setText(Integer.toString(lastInvId));
+                jStatus.setForeground(Color.green);
+                jStatus.setText(msg);
+            }
+            catch(SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         else{
             textFieldResetEnabled = true; 
@@ -928,7 +960,9 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLastInvId;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jPaymentDueDate;

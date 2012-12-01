@@ -6,10 +6,12 @@
 package com.thp.object;
 
 import com.thp.boundary.CreateCustomerForm;
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -187,10 +189,11 @@ public class Invoice {
             ResultSet rs = stmt.executeQuery(sqlInvId);
             while(rs.next()){
                 if (invId == rs.getInt("INVOICEID")){
-                    valid = false;
+                    valid = true;
                     break;
-                }                
+                }
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
             valid = false;

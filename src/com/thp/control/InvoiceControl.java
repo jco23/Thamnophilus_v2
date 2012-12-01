@@ -50,7 +50,6 @@ public class InvoiceControl {
                 String sqlWid = getSqlWid(widInvList, i);
                 stmt.execute(sqlWid);
             }*/
-            System.out.println(sqlInv);
             stmt.executeUpdate(sqlInv);
             return "Invoice successfully created.";
         } catch (SQLException ex) {
