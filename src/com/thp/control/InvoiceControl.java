@@ -26,7 +26,7 @@ public class InvoiceControl {
      * @param widInvList
      * @return
      */
-    public static String createInvoice(Invoice inv, ArrayList<WidgetInvoice> widInvList)
+    public static String createInvoice(Invoice inv)
     {
          try {
             Statement stmt = AccountDB.conn.createStatement();  
@@ -46,16 +46,31 @@ public class InvoiceControl {
                             inv.getTotal() + ", " +
                             inv.getBalance() + ", " +
                             inv.getFinanceCharge() + ")";
-            /*for(int i = 0; i < widInvList.size(); i++){
-                String sqlWid = getSqlWid(widInvList, i);
-                stmt.execute(sqlWid);
-            }*/
+            
             stmt.executeUpdate(sqlInv);
             return "Invoice successfully created.";
         } catch (SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
             return "Error. Invoice was not successfully created.";
         }
+    }
+    
+    public static int populateWidInv(ArrayList<WidgetInvoice> widInvList)
+    {
+        try{
+            Statement stmt = AccountDB.conn.createStatement(); 
+            int siz = widInvList.size();
+            for(int i = 0; i < widInvList.size(); i++){
+                String sqlWid = getSqlWid(widInvList, i);
+                stmt.execute(sqlWid);
+            }
+            return 1;
+        }
+        catch(SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+        
     }
     
     public static String getSqlWid(ArrayList<WidgetInvoice> widInvList, int i)
