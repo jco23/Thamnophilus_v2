@@ -46,10 +46,10 @@ public class InvoiceControl {
                             inv.getTotal() + ", " +
                             inv.getBalance() + ", " +
                             inv.getFinanceCharge() + ")";
-            //for(int i = 0; i < widInvList.size(); i++){
-           //     String sqlWid = getSqlWid(widInvList, i);
-          //      stmt.execute(sqlWid);
-          //  }
+            /*for(int i = 0; i < widInvList.size(); i++){
+                String sqlWid = getSqlWid(widInvList, i);
+                stmt.execute(sqlWid);
+            }*/
             System.out.println(sqlInv);
             stmt.executeUpdate(sqlInv);
             return "Invoice successfully created.";

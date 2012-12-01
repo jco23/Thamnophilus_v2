@@ -221,7 +221,7 @@ public class Switchboard extends javax.swing.JFrame {
             }
         });
 
-        jEditI_bt.setText("Edit");
+        jEditI_bt.setText("Delete");
         jEditI_bt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jEditI_btMouseClicked(evt);

@@ -5,7 +5,13 @@
 
 package com.thp.object;
 
+import com.thp.boundary.CreateCustomerForm;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +33,7 @@ public class Invoice {
     double total;
     double balance;
     double financeCharge;
+    String nullDate = "NULL";
     
     public Invoice(){
         setInvoice(0, 0, 0, 0,
@@ -60,14 +67,35 @@ public class Invoice {
         setBalance(bal);
     }
     
-    public void setInvoiceId(int invId){
-        invoiceId = invId;
+    public String setInvoiceId(int invId){
+        if(invIdExist(invId) == true){
+            invoiceId = invId;
+            return "";
+        }
+        else{
+            String err = "ID: " + invId + "already exists!";
+            return err;
+        }
     }
-    public void setCustomerId(int custId){
-        customerId = custId;
+    public String  setCustomerId(int custId){
+        if(custIdExist(custId) == true){
+            customerId = custId;
+            return "";
+        }
+        else{
+            String err = "ID: " + custId + "does not exists!";
+            return err;
+        }
     }
-    public void setSalespersonId(int spId){
-        salespersonId = spId;
+    public String setSalespersonId(int spId){
+        if(spIdExist(spId) == true){
+            salespersonId = spId;
+            return "";
+        }
+        else{
+            String err = "ID: " + spId + "does not exists!";
+            return err;
+        }
     }
     public void setWidgetId(int wId){
         widgetId = wId;
@@ -105,9 +133,7 @@ public class Invoice {
     public void setFinanceCharge(double finCharge){
         financeCharge = finCharge;
     }
-    
-    
-    
+   
     public int getInvoiceId(){
         return invoiceId;
     }
@@ -152,5 +178,64 @@ public class Invoice {
     }
     public double getFinanceCharge(){
         return financeCharge;
+    }
+    public boolean invIdExist(int invId){
+        boolean valid = true;
+        try{
+            Statement stmt = AccountDB.conn.createStatement();  
+            String sqlInvId = "select INVOICEID from APP.INVOICES";
+            ResultSet rs = stmt.executeQuery(sqlInvId);
+            while(rs.next()){
+                if (invId == rs.getInt("INVOICEID")){
+                    valid = false;
+                    break;
+                }                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            valid = false;
+            return valid;
+        }
+        return valid;
+    }
+    
+    public boolean custIdExist(int custId){
+        boolean valid = false;
+        try{
+            Statement stmt = AccountDB.conn.createStatement();  
+            String sqlCustId = "select ID from APP.CUSTOMERS";
+            ResultSet rs = stmt.executeQuery(sqlCustId);
+            while(rs.next()){
+                if (custId == rs.getInt("ID")){
+                    valid = true;
+                    break;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            valid = false;
+            return valid;
+        }
+        return valid;
+    }
+    
+    public boolean spIdExist(int custId){
+        boolean valid = false;
+        try{
+            Statement stmt = AccountDB.conn.createStatement();  
+            String sqlCustId = "select ID from APP.CUSTOMERS";
+            ResultSet rs = stmt.executeQuery(sqlCustId);
+            while(rs.next()){
+                if (custId == rs.getInt("ID")){
+                    valid = true;
+                    break;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            valid = false;
+            return valid;
+        }
+        return valid;
     }
 }
