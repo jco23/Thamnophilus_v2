@@ -601,8 +601,8 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         
         if(jSalespersonID.getText().isEmpty())
         {
-            jInvoiceID.setText("This field is required!");
-            jInvoiceID.setBackground(Color.pink);
+            jSalespersonID.setText("This field is required!");
+            jSalespersonID.setBackground(Color.pink);
         }else if(entryIsValid(jSalespersonID) == true){
            spIdRes = invoice.setSalespersonId(Integer.parseInt(jSalespersonID.getText()));
            setTextField(spIdRes, jSalespersonID);
@@ -610,8 +610,8 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         
         if(jCustID.getText().isEmpty())
         {
-            jInvoiceID.setText("This field is required!");
-            jInvoiceID.setBackground(Color.pink);
+            jCustID.setText("This field is required!");
+            jCustID.setBackground(Color.pink);
         }else if(entryIsValid(jCustID) == true){
            custIdRes = invoice.setCustomerId(Integer.parseInt(jCustID.getText()));
            setTextField(custIdRes, jCustID);
