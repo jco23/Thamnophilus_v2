@@ -47,6 +47,7 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jSearchByList = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
+        jStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,7 +122,6 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -129,7 +129,7 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -142,6 +142,11 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
         jSearchByList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Invoice ID", "Customer ID", "Salesperson ID", "Customer Last Name", "Salesperson Last Name" }));
 
         jButton3.setText("Delete");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,10 +157,15 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSearchByList, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSearchByList, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(102, 102, 102)
+                                .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -175,18 +185,20 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jSearchByList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
                 .addGap(18, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -221,15 +233,56 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        int invId = 0;
-        int custId = 0;
-        int spId = 0;
-        String custLnm = "";
-        String spLnm = "";
+        
         ResultSet rs;
         String searchBy = jSearchByList.getSelectedItem().toString();
         if(!jSearchBox.getText().isEmpty()){ 
-            switch(getChar(searchBy)){
+            rs = getResultSet(searchBy);
+            refreshTable(jTable1, rs);
+        }
+                
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    public void refreshTable(javax.swing.JTable tbl, ResultSet rs)
+    {
+        try{
+                int i = 0;
+                boolean rsIsEmpty = true;
+                clearTable(jTable1);
+                jStatus.setText("");
+                while(rs.next())
+                {
+                    rsIsEmpty = false;
+                    jTable1.setValueAt(Integer.toString(rs.getInt("INVOICEID")), i, 0);
+                    if(!rs.getString("LASTNAME").equals(""))
+                    {
+                        jTable1.setValueAt(rs.getString("LASTNAME"), i, 1);
+                    }
+                    else
+                    {
+                        jTable1.setValueAt(rs.getString("COMPANY"), i, 1);
+                    }
+                    
+                    jTable1.setValueAt(Double.toString(rs.getDouble("BALANCE")), i, 2);
+                    jTable1.setValueAt(Integer.toString(rs.getInt("SALESPERSONID")), i, 3);
+                    i++;
+                }
+                if(rsIsEmpty == true){
+                    jStatus.setForeground(Color.red);
+                    jStatus.setText("Invoice Not Found");
+                }
+            }
+            catch(SQLException ex){
+                Logger.getLogger(SearchInvoiceForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    public ResultSet getResultSet(String searchBy)
+    {
+        int invId = 0;
+        int custId = 0;
+        int spId = 0;
+        ResultSet rs;
+        switch(getChar(searchBy)){
                 case 'V':
                     try{
                         invId = Integer.parseInt(jSearchBox.getText());
@@ -281,19 +334,30 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
                     rs = InvoiceControl.searchInvoiceBy("INVOICEID", invId);
                     break;
             }
-            try{
-                while(rs.next())
-                {
-                
-                }
-            }
-            catch(SQLException ex){
-                Logger.getLogger(SearchInvoiceForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-                
-    }//GEN-LAST:event_jButton1MouseClicked
+        return rs;
+    }
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        int invId = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),0).toString());
+        InvoiceControl.deleteInvoice(invId);
+        ResultSet rs = getResultSet(jSearchByList.getSelectedItem().toString());
+        refreshTable(jTable1, rs);
+        jStatus.setForeground(Color.blue);
+        jStatus.setText("Invoice Deleted.");
+    }//GEN-LAST:event_jButton3MouseClicked
   
+    public void clearTable(javax.swing.JTable tbl)
+    {
+        int i =0;
+        while(i<50){
+                tbl.setValueAt("", i, 0);
+                tbl.setValueAt("", i, 1);
+                tbl.setValueAt("", i, 2);
+                tbl.setValueAt("", i, 3);
+                i++;
+        }
+    }
+    
     public char getChar(String searchBy)
     {
         char ch = 'O';
@@ -363,6 +427,7 @@ public class SearchInvoiceForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jSearchBox;
     private javax.swing.JComboBox jSearchByList;
+    private javax.swing.JLabel jStatus;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -109,18 +109,18 @@ public class InvoiceControl {
             Statement stmt = AccountDB.conn.createStatement();
             String sql;
             if(attr.equals("CLASTNAME")){
-                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID, cust.COMPANY "
                           + "FROM APP.INVOICES AS inv "
                           + "INNER JOIN APP.CUSTOMERS AS cust "
-                          + "ON inv.CUSTOMERID = cust.ID"
+                          + "ON inv.CUSTOMERID = cust.ID "
                           + "WHERE " + attr.substring(1) +" = " + lname;
             }else{
-                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID, cust.COMPANY "
                           + "FROM APP.INVOICES AS inv "
                           + "INNER JOIN APP.SALESPEOPLE AS sp "
-                          + "ON inv.SALESPERSONID = sp.ID"
+                          + "ON inv.SALESPERSONID = sp.ID "
                           + "INNER JOIN APP.CUSTOMERS AS cust "
-                          + "ON inv.CUSTOMERID = cust.ID"
+                          + "ON inv.CUSTOMERID = cust.ID "
                           + "WHERE sp." + attr.substring(1) +" = " + lname;
             }
             rs = stmt.executeQuery(sql);
@@ -133,11 +133,11 @@ public class InvoiceControl {
         ResultSet rs = null;
         try {
             Statement stmt = AccountDB.conn.createStatement();
-            String sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+            String sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID, cust.COMPANY "
                           + "FROM APP.INVOICES AS inv "
                           + "INNER JOIN APP.CUSTOMERS AS cust "
-                          + "ON inv.CUSTOMERID = cust.ID"
-                          + "WHERE " + attr +" = " + id;
+                          + "ON inv.CUSTOMERID = cust.ID "
+                          + "WHERE inv." + attr +" = " + id;
             rs = stmt.executeQuery(sql);
                 
  
@@ -147,6 +147,19 @@ public class InvoiceControl {
         return rs;
     }
     
-    public static void deleteInvoice(){}
-    public static void searchInvoice(){} 
+    public static int deleteInvoice(int invId){
+        try{
+            Statement stmt = AccountDB.conn.createStatement();
+            String sqlWigInv = "delete from APP.WIDGETSINVOICES where INVOICEID = " + invId;
+            String sqlInv = "delete from APP.INVOICES where INVOICEID = " + invId;
+            stmt.executeUpdate(sqlWigInv);
+            stmt.executeUpdate(sqlInv);
+            return 1;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(InvoiceControl.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    
+    }
 }
