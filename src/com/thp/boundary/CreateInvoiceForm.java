@@ -685,7 +685,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
             stmt.executeQuery(sqlInv);
             return 1;
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateInvoiceForm.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
     }
@@ -726,7 +726,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                 return lastInvId;
         }
         catch(SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateInvoiceForm.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
             

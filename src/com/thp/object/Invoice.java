@@ -189,7 +189,7 @@ public class Invoice {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
             valid = false;
             return valid;
         }
@@ -209,7 +209,7 @@ public class Invoice {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
             valid = false;
             return valid;
         }
@@ -229,7 +229,7 @@ public class Invoice {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
             valid = false;
             return valid;
         }

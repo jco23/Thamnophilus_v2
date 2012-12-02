@@ -53,7 +53,6 @@ public class Switchboard extends javax.swing.JFrame {
         jInvoices_Label = new javax.swing.JLabel();
         jCreateI_btn = new javax.swing.JButton();
         jEditI_bt = new javax.swing.JButton();
-        jSearchI_btn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jSalesperson_Label = new javax.swing.JLabel();
         jCreateS_btn = new javax.swing.JButton();
@@ -221,7 +220,7 @@ public class Switchboard extends javax.swing.JFrame {
             }
         });
 
-        jEditI_bt.setText("Delete");
+        jEditI_bt.setText("Search/Delete");
         jEditI_bt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jEditI_btMouseClicked(evt);
@@ -230,13 +229,6 @@ public class Switchboard extends javax.swing.JFrame {
         jEditI_bt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jEditI_btActionPerformed(evt);
-            }
-        });
-
-        jSearchI_btn.setText("Search");
-        jSearchI_btn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jSearchI_btnMouseClicked(evt);
             }
         });
 
@@ -251,7 +243,6 @@ public class Switchboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSearchI_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCreateI_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jEditI_bt, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
@@ -261,13 +252,11 @@ public class Switchboard extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jInvoices_Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jCreateI_btn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jEditI_bt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSearchI_btn)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -625,14 +614,9 @@ public class Switchboard extends javax.swing.JFrame {
         new PaymentForm().setVisible(true);
     }//GEN-LAST:event_jRecordP_btnMouseClicked
 
-    private void jSearchI_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchI_btnMouseClicked
-        // TODO add your handling code here:
-        new SearchInvoiceForm().setVisible(true);
-    }//GEN-LAST:event_jSearchI_btnMouseClicked
-
     private void jEditI_btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jEditI_btMouseClicked
         // TODO add your handling code here:
-        new DeleteInvoiceForm().setVisible(true);
+        new SearchInvoiceForm().setVisible(true);
     }//GEN-LAST:event_jEditI_btMouseClicked
 
     private void jCreateI_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCreateI_btnMouseClicked
@@ -767,7 +751,6 @@ public class Switchboard extends javax.swing.JFrame {
     private javax.swing.JLabel jSalesperson_Label;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSearchC_btn;
-    private javax.swing.JButton jSearchI_btn;
     private javax.swing.JButton jSearchS_btn;
     private javax.swing.JButton jSearchW_btn;
     private javax.swing.JTable jTable1;

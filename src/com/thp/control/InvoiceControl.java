@@ -10,6 +10,8 @@ import com.thp.object.Invoice;
 import com.thp.object.WidgetInvoice;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,28 +97,56 @@ public class InvoiceControl {
                         "' AND LASTNAME='" + sp.getLastName() + "'" ;
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InvoiceControl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+    */
     //Pre-condition: Salesperson object containing firstname & lastname
     //Post-condition: Returns a status message
-    public static Invoice searchInvoice(Invoice sp){
+    public static ResultSet searchInvoiceBy(String attr, String lname){
+        ResultSet rs = null;
         try {
             Statement stmt = AccountDB.conn.createStatement();
-            String sql = "SELECT ID, FIRSTNAME, LASTNAME, PHONE FROM APP.SALESPEOPLE WHERE FIRSTNAME='" + 
-                            sp.getFirstName() + "' AND LASTNAME = '" + sp.getLastName() + "'";
-            ResultSet rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    sp.setId(rs.getInt("ID"));
-                    sp.setSalesperson(rs.getString("FIRSTNAME"), rs.getString("LASTNAME"), rs.getString("PHONE"));
-                }
+            String sql;
+            if(attr.equals("CLASTNAME")){
+                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+                          + "FROM APP.INVOICES AS inv "
+                          + "INNER JOIN APP.CUSTOMERS AS cust "
+                          + "ON inv.CUSTOMERID = cust.ID"
+                          + "WHERE " + attr.substring(1) +" = " + lname;
+            }else{
+                sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+                          + "FROM APP.INVOICES AS inv "
+                          + "INNER JOIN APP.SALESPEOPLE AS sp "
+                          + "ON inv.SALESPERSONID = sp.ID"
+                          + "INNER JOIN APP.CUSTOMERS AS cust "
+                          + "ON inv.CUSTOMERID = cust.ID"
+                          + "WHERE sp." + attr.substring(1) +" = " + lname;
+            }
+            rs = stmt.executeQuery(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(InvoiceControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+    public static ResultSet searchInvoiceBy(String attr, int id){
+        ResultSet rs = null;
+        try {
+            Statement stmt = AccountDB.conn.createStatement();
+            String sql = "SELECT inv.INVOICEID, cust.LASTNAME, inv.BALANCE, inv.SALESPERSONID "
+                          + "FROM APP.INVOICES AS inv "
+                          + "INNER JOIN APP.CUSTOMERS AS cust "
+                          + "ON inv.CUSTOMERID = cust.ID"
+                          + "WHERE " + attr +" = " + id;
+            rs = stmt.executeQuery(sql);
+                
  
         } catch (SQLException ex) {
-            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InvoiceControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sp;
-    }*/
+        return rs;
+    }
+    
     public static void deleteInvoice(){}
     public static void searchInvoice(){} 
 }
