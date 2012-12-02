@@ -569,22 +569,24 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         Invoice invoice = new Invoice();
-        ArrayList<WidgetInvoice> widInvList = new ArrayList<WidgetInvoice>();
+        boolean testBit = true;
         //test and set all ID's
         
-        if(jSalespersonID.getText().isEmpty())
+        if(jSalespersonID.getText().isEmpty()||jSalespersonID.getText().equals("This field is required!"))
         {
             jSalespersonID.setText("This field is required!");
             jSalespersonID.setBackground(Color.pink);
+            testBit = false;
         }else if(entryIsValid(jSalespersonID) == true){
            spIdRes = invoice.setSalespersonId(Integer.parseInt(jSalespersonID.getText()));
            setTextField(spIdRes, jSalespersonID);
         }//Salesperson ID
         
-        if(jCustID.getText().isEmpty())
+        if(jCustID.getText().isEmpty()||jCustID.getText().equals("This field is required!"))
         {
             jCustID.setText("This field is required!");
             jCustID.setBackground(Color.pink);
+            testBit = false;
         }else if(entryIsValid(jCustID) == true){
            custIdRes = invoice.setCustomerId(Integer.parseInt(jCustID.getText()));
            setTextField(custIdRes, jCustID);
@@ -622,26 +624,87 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
             invoice.setFinanceCharge(Double.parseDouble(jFinanceCharge.getText()));
         }//Finance Charge
         
-        if(jTotalPrice.getText().isEmpty()){
+        if(jTotalPrice.getText().isEmpty()||jTotalPrice.getText().equals("Calculate total please.")){
+            testBit = false;
             jTotalPrice.setBackground(Color.pink);
             jTotalPrice.setText("Calculate total please.");
         }else{
              invoice.setTotal(Double.parseDouble(jTotalPrice.getText()));
         }
         
+        if(jSubtotal2.getText().isEmpty()||jSubtotal2.getText().equals("Calculate subtotal please.")){
+            testBit = false;
+            jSubtotal2.setBackground(Color.pink);
+            jSubtotal2.setText("Calculate subtotal please.");
+        }else{
+             invoice.setSubtotal(Double.parseDouble(jSubtotal2.getText()));
+        }
+        
         //the test need not to be tested
-        invoice.setSubtotal(Double.parseDouble(jSubtotal2.getText()));
         invoice.setDiscount(Double.parseDouble(jDiscount.getSelectedItem().toString().substring(0, 2)));
         invoice.setTax(Double.parseDouble(jTax.getText().substring(0, 4)));
         invoice.setBalance(Double.parseDouble(jBalance.getText()));
         
         //Push invoice into Datebase
-        String msg = InvoiceControl.createInvoice(invoice);
-        
-        if(msg.substring(0,1).equals("I"))
-        {
-            int lastInvId = 0;
-            try{
+        String msg = " ";
+        if(testBit == true){
+            msg = InvoiceControl.createInvoice(invoice);
+            if(msg.substring(0,1).equals("I"))
+            {
+                    int lastInvId = getLastInvoiceId();
+                    invoice.setInvoiceId(lastInvId);
+                    ArrayList<WidgetInvoice> widInvList = makeWidInvList(invoice);
+                    if(InvoiceControl.populateWidInv(widInvList)==1){
+
+                        jLastInvId.setText(Integer.toString(lastInvId));
+                        jStatus.setForeground(Color.green);
+                        jStatus.setText(msg);
+                    }
+                    else{
+                        deleteEmptyInvoice(lastInvId);
+                        textFieldResetEnabled = true; 
+                        jStatus.setForeground(Color.red);
+                        msg = "Error. Store widget list failed.";
+                        jStatus.setText(msg);
+                    }
+            }
+            else{
+                textFieldResetEnabled = true; 
+                jStatus.setForeground(Color.red);
+                jStatus.setText(msg);
+            }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+    public int deleteEmptyInvoice(int lastInvId)
+    {
+        try{
+            Statement stmt = AccountDB.conn.createStatement();  
+            String sqlWigInv = "delete from APP.WIDGETSINVOICES where INVOICEID = " + lastInvId;
+            String sqlInv = "delete from APP.INVOICES where INVOICEID = " + lastInvId;
+            stmt.executeQuery(sqlWigInv);
+            stmt.executeQuery(sqlInv);
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+    public ArrayList<WidgetInvoice> makeWidInvList(Invoice inv)
+    {
+        ArrayList<WidgetInvoice> widInvList = new ArrayList<WidgetInvoice>();
+        for(int l = 0; l< i; l++){
+                    WidgetInvoice widInv = new WidgetInvoice();
+                    widInv.setWidgetId(Integer.parseInt(jTable2.getValueAt(l, 0).toString().substring(1)));
+                    widInv.setInvoiceId(inv.getInvoiceId());
+                    widInv.setQuantity(Integer.parseInt(jTable2.getValueAt(l, 2).toString().substring(0)));
+                    widInvList.add(widInv);
+        }
+        return widInvList;
+    }
+    public int getLastInvoiceId()
+    {
+        int lastInvId = 0;
+        try{
                 int j = 0;
                 int [] idList = new int[100];
                 Statement stmt = AccountDB.conn.createStatement();  
@@ -660,38 +723,14 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                         break;
                     }
                 }
-                invoice.setInvoiceId(lastInvId);
-                jLastInvId.setText(Integer.toString(lastInvId));
-                
-                for(int l = 0; l< i; l++){
-                    WidgetInvoice widInv = new WidgetInvoice();
-                    widInv.setWidgetId(Integer.parseInt(jTable2.getValueAt(l, 0).toString().substring(1)));
-                    widInv.setInvoiceId(invoice.getInvoiceId());
-                    widInv.setQuantity(Integer.parseInt(jTable2.getValueAt(l, 2).toString().substring(0)));
-                    widInvList.add(widInv);
-                }
-                if(InvoiceControl.populateWidInv(widInvList)==1){
-                    jStatus.setForeground(Color.green);
-                    jStatus.setText(msg);
-                }
-                else{
-                    textFieldResetEnabled = true; 
-                    jStatus.setForeground(Color.red);
-                    msg = "Error. Store widget list failed.";
-                    jStatus.setText(msg);
-                }
-            }
-            catch(SQLException ex) {
+                return lastInvId;
+        }
+        catch(SQLException ex) {
             Logger.getLogger(CreateCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            return 0;
+        }
             
-        }
-        else{
-            textFieldResetEnabled = true; 
-            jStatus.setForeground(Color.red);
-            jStatus.setText(msg);
-        }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }
     public void setTextField(String res, javax.swing.JTextField txtFld)
     {
         if(res.equals(""))
@@ -710,8 +749,12 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                 return valid;
             }
             catch(Exception e){
+                if(txtFld.getText().equals("This field is required!")){
+                    ;
+                }else{
                 txtFld.setBackground(Color.pink);
                 txtFld.setText("Invalid entry");
+                }
                 valid = false;
                 return valid;
             }
@@ -748,7 +791,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jFrame1.setVisible(true);
         try {
                 jListModel.removeAllElements();
-                 int i = 1;
+                 int q = 1;
                  Statement stmt = AccountDB.conn.createStatement();
                  String sql = "SELECT ID, WIDGETNAME, QTY, CUNITPRICE FROM APP.WIDGETS";
                  ResultSet rs = stmt.executeQuery(sql);
@@ -758,8 +801,8 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
                       String wname = rs.getString("WIDGETNAME");
                       String qty = rs.getString("QTY");
                       String uprice = rs.getString("CUNITPRICE");
-                      jListModel.add(i, "      " + id + "      " + wname + "      " + qty + "      " + uprice + "      ");
-                      i++;
+                      jListModel.add(q, "      " + id + "      " + wname + "      " + qty + "      " + uprice + "      ");
+                      q++;
                  }    
         } 
         catch (SQLException ex) {
@@ -780,11 +823,35 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
             DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(d));
     }
-    
+    private int itemExists(String item)
+    {
+        int exist=1000000;
+        String [] items = strSplit(item);
+        String[] itemIdList = new String[20];
+        for(int p = 0; p < i; p++)
+        {
+            itemIdList[p] = jTable2.getValueAt(p, 0).toString();
+        }
+        for(int p = 0; p < i; p++)
+        {
+            if(itemIdList[p].equals(items[1]))
+            {
+                exist = p;
+                break;
+            }
+        }
+        return exist;
+    }
     private void jList1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseReleased
         // TODO add your handling code here:
-        
         String item = (String)jListModel.getElementAt(jList1.getSelectedIndex());
+        
+        int exist = itemExists(item);//returns 0 if does not exist, the
+                                       //row or id number if does exist.
+        if(exist != 1000000){//item does exist in list.
+          String qtyStr =jTable2.getValueAt(exist, 2).toString();
+          jTable2.setValueAt(Integer.toString(Integer.parseInt(qtyStr)+1), exist, 2);
+        }else{
         String [] items = strSplit(item);
         selectedWidgetId = items[1];
         selectedWidgetNm = items[2];
@@ -795,6 +862,7 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jTable2.setValueAt("1", i, 2);
         jTable2.setValueAt(selectedWidgetPrice, i, 3);
         i++;
+        }
     }//GEN-LAST:event_jList1MouseReleased
 
     

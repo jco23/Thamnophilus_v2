@@ -70,14 +70,8 @@ public class Invoice {
     }
     
     public String setInvoiceId(int invId){
-        if(invIdExist(invId) == true){
-            invoiceId = invId;
-            return "";
-        }
-        else{
-            String err = "ID: " + invId + " already exists!";
-            return err;
-        }
+        invoiceId = invId;
+        return "";
     }
     public String  setCustomerId(int custId){
         if(custIdExist(custId) == true){
