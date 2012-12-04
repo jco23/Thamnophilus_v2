@@ -230,6 +230,11 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
             }
         });
 
+        jTermsCode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTermsCodeMouseClicked(evt);
+            }
+        });
         jTermsCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTermsCodeActionPerformed(evt);
@@ -611,38 +616,45 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
             jIssueDate.setBackground(Color.pink);
             jIssueDate.setText("This field is required!");
             testBit = false;
-            invoice.setInvoiceDate(Date.valueOf("9999-12-12"));
         }else if(isValidDate(jIssueDate) == true){
             invoice.setInvoiceDate(Date.valueOf(jIssueDate.getText()));
         }//Invoice Date
         
-        if(jPaymentDueDate.getText().isEmpty()){
-            if(jPaymentDueDate.getText().equals("Invalid format.")){
-                testBit = false;
-            }
-            invoice.setPaymentDueDate(Date.valueOf("9999-12-12"));
+        if(jPaymentDueDate.getText().isEmpty()||jPaymentDueDate.getText().equals("Invalid format.")
+                                              ||jPaymentDueDate.getText().equals("This field is required!"))
+        {
+            jPaymentDueDate.setBackground(Color.pink);
+            jPaymentDueDate.setText("This field is required!");
+            testBit = false;
         }else if(isValidDate(jPaymentDueDate) == true){
-            invoice.setInvoiceDate(Date.valueOf(jPaymentDueDate.getText()));
+            invoice.setPaymentDueDate(Date.valueOf(jPaymentDueDate.getText()));
         }//Payment Date
         
-        if(jShipDate.getText().isEmpty()){
-            if(jShipDate.getText().equals("Invalid format.")){
-                testBit = false;
-            }
-            invoice.setShipDate(Date.valueOf("9999-12-12"));
+        if(jShipDate.getText().isEmpty()||jShipDate.getText().equals("Invalid format.")
+                                        ||jPaymentDueDate.getText().equals("This field is required!"))
+        {
+            jShipDate.setBackground(Color.pink);
+            jShipDate.setText("This field is required!");
+            testBit = false;
         }else if(isValidDate(jShipDate) == true){
             invoice.setShipDate(Date.valueOf(jShipDate.getText()));
         }//Ship Date
         
         //Test and set all test fields
-        if(jTermsCode.getText().isEmpty()){
-            invoice.setTermsCode(" ");
+        if(jTermsCode.getText().isEmpty()||jTermsCode.getText().equals("This field is required!"))
+        {
+            jTermsCode.setBackground(Color.pink);
+            jTermsCode.setText("This field is required!");
+            testBit = false;
         }else{
             invoice.setTermsCode(jTermsCode.getText());
         }//Terms Code
         
-        if(jFinanceCharge.getText().isEmpty()){
-            invoice.setFinanceCharge(0);
+        if(jFinanceCharge.getText().isEmpty()||jFinanceCharge.getText().equals("This field is required!"))
+        {
+            jFinanceCharge.setBackground(Color.pink);
+            jFinanceCharge.setText("This field is required!");
+            testBit = false;
         }else if(doubleEntryIsValid(jFinanceCharge)==true){
             invoice.setFinanceCharge(Double.parseDouble(jFinanceCharge.getText()));
         }//Finance Charge
@@ -976,6 +988,14 @@ public class CreateInvoiceForm extends javax.swing.JFrame {
         jSubtotal2.setBackground(Color.WHITE);
         jSubtotal2.setText(Double.toString(subtot));
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jTermsCodeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTermsCodeMouseClicked
+        // TODO add your handling code here:
+        if(textFieldResetEnabled = true){
+           jTermsCode.setBackground(Color.white); 
+           jTermsCode.setText(""); 
+        }
+    }//GEN-LAST:event_jTermsCodeMouseClicked
     
     
     /**
